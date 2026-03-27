@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS University — Shape Tomorrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════ */
+:root {
+  --bg: #f5f2eb;
+  --bg2: #ede9df;
+  --ink: #0f0e0b;
+  --ink2: #3a3830;
+  --muted: #8c8779;
+  --gold: #c8962a;
+  --gold2: #e8b84b;
+  --deep: #1a2744;
+  --deep2: #243460;
+  --accent: #e84545;
+  --green: #2d8c4e;
+  --surface: #ffffff;
+  --border: rgba(15,14,11,0.1);
+  --shadow: 0 4px 30px rgba(15,14,11,0.08);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--ink);font-family:'Cabinet Grotesk',sans-serif;overflow-x:hidden;cursor:none}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:none;font-family:'Cabinet Grotesk',sans-serif}
+
+/* CUSTOM CURSOR */
+.cur{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .1s}
+.cur-ring{position:fixed;width:32px;height:32px;border:1.5px solid var(--deep);border-radius:50%;pointer-events:none;z-index:9998;transition:all .15s ease}
+.cur-ring.big{width:52px;height:52px;border-color:var(--gold)}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.2rem 4rem;display:flex;justify-content:space-between;align-items:center;background:rgba(245,242,235,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:.8rem}
+.logo-mark{width:36px;height:36px;background:var(--deep);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-style:italic;color:#fff;font-size:1.1rem;font-weight:400}
+.logo-text{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:.05em;color:var(--deep)}
+.logo-sub{font-size:.6rem;letter-spacing:.15em;color:var(--muted);text-transform:uppercase;display:block;margin-top:-2px}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.8rem;font-weight:600;color:var(--ink2);letter-spacing:.05em;text-transform:uppercase;position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--gold);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--deep);color:#fff;padding:.6rem 1.5rem;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;transition:all .2s}
+.nav-cta:hover{background:var(--gold);color:var(--deep)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.3rem}
+.hamburger span{width:22px;height:2px;background:var(--ink);display:block;transition:all .3s}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4rem;padding-top:5rem;position:relative;overflow:hidden;gap:4rem}
+.hero-bg-text{position:absolute;font-family:'Instrument Serif',serif;font-size:22vw;color:rgba(15,14,11,0.04);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;user-select:none;font-weight:400}
+.hero-dots{position:absolute;top:0;right:0;width:40%;height:100%;background-image:radial-gradient(var(--border) 1.5px, transparent 1.5px);background-size:24px 24px;opacity:.5}
+.hero-left{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(200,150,42,0.12);border:1px solid rgba(200,150,42,0.3);padding:.4rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.hero-badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 1.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{font-family:'Instrument Serif',serif;font-size:clamp(3.2rem,5.5vw,5.5rem);line-height:1.02;font-weight:400;margin-bottom:1.5rem;color:var(--ink)}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-title strong{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-style:normal;color:var(--deep)}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.75;max-width:480px;margin-bottom:2.5rem;font-weight:500}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-dark{background:var(--deep);color:#fff;padding:.9rem 2.2rem;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border:2px solid var(--deep);transition:all .2s;display:inline-block}
+.btn-dark:hover{background:transparent;color:var(--deep)}
+.btn-outline{background:transparent;color:var(--ink);padding:.9rem 2.2rem;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border:2px solid var(--border);transition:all .2s;display:inline-block}
+.btn-outline:hover{border-color:var(--deep);color:var(--deep)}
+.hero-stats{display:flex;gap:2rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.hstat-num{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;color:var(--deep);display:block}
+.hstat-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600}
+.hero-right{position:relative;z-index:1}
+.hero-card-stack{position:relative;height:520px}
+.hero-main-card{position:absolute;width:100%;height:480px;background:var(--deep);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem}
+.hero-card-img{position:absolute;inset:0;background:linear-gradient(135deg,#1a2744 0%,#243460 40%,#2d4a8c 100%);display:flex;align-items:center;justify-content:center;font-size:8rem;opacity:.15}
+.hero-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,14,11,0.8) 0%,transparent 60%)}
+.hero-card-content{position:relative;z-index:1}
+.hcard-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.hcard-title{font-family:'Instrument Serif',serif;font-size:1.8rem;color:#fff;line-height:1.2;margin-bottom:1rem}
+.hcard-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--deep);padding:.5rem 1.2rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.hero-float-card{position:absolute;background:#fff;padding:1.2rem 1.5rem;box-shadow:var(--shadow);border:1px solid var(--border)}
+.float-card-1{bottom:-20px;left:-30px;width:190px}
+.float-card-2{top:20px;right:-20px;width:170px}
+.float-num{font-family:'Instrument Serif',serif;font-size:1.8rem;color:var(--gold);line-height:1}
+.float-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin-top:.2rem}
+
+/* ═══════════════════════════════════════
+   SECTION BASICS
+═══════════════════════════════════════ */
+section{padding:6rem 4rem}
+.section-eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+.section-eyebrow::before{content:'';width:30px;height:1.5px;background:var(--gold)}
+.section-title{font-family:'Instrument Serif',serif;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.1;color:var(--ink);margin-bottom:.75rem;font-weight:400}
+.section-title strong{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;color:var(--deep)}
+.section-sub{color:var(--muted);font-size:.95rem;line-height:1.75;max-width:520px;font-weight:500}
+
+/* ═══════════════════════════════════════
+   MARQUEE
+═══════════════════════════════════════ */
+.marquee-band{background:var(--deep);padding:1.1rem 0;overflow:hidden;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold)}
+.marquee-inner{display:flex;animation:marquee 30s linear infinite;white-space:nowrap}
+.marquee-inner:hover{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{display:flex;align-items:center;gap:1.5rem;padding:0 2.5rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:700;flex-shrink:0}
+.marquee-item .sep{color:var(--gold);font-size:.8rem}
+
+/* ═══════════════════════════════════════
+   SMART COURSE FINDER
+═══════════════════════════════════════ */
+.finder-section{background:var(--deep);color:#fff;position:relative;overflow:hidden}
+.finder-section::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(200,150,42,.15) 0%,transparent 70%)}
+.finder-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1}
+.finder-section .section-eyebrow{color:var(--gold2)}
+.finder-section .section-title{color:#fff}
+.finder-section .section-sub{color:rgba(255,255,255,.5)}
+.quiz-flow{margin-top:2.5rem}
+.quiz-step{display:none}
+.quiz-step.active{display:block}
+.quiz-q{font-family:'Instrument Serif',serif;font-size:1.4rem;color:#fff;margin-bottom:1.5rem;line-height:1.3}
+.quiz-options{display:flex;flex-direction:column;gap:.8rem}
+.quiz-opt{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:1rem 1.4rem;color:rgba(255,255,255,.75);font-size:.85rem;font-weight:600;cursor:none;transition:all .2s;text-align:left;display:flex;align-items:center;gap:1rem}
+.quiz-opt:hover,.quiz-opt.selected{background:rgba(200,150,42,.15);border-color:var(--gold2);color:#fff}
+.quiz-opt-icon{font-size:1.2rem;width:30px;text-align:center;flex-shrink:0}
+.quiz-progress{display:flex;gap:.4rem;margin-bottom:2rem}
+.qprog-dot{height:3px;flex:1;background:rgba(255,255,255,.15);transition:background .3s}
+.qprog-dot.done{background:var(--gold2)}
+.quiz-nav{display:flex;gap:1rem;margin-top:1.5rem}
+.quiz-btn{background:var(--gold);color:var(--deep);padding:.7rem 1.8rem;font-size:.78rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;border:none;transition:all .2s}
+.quiz-btn:hover{background:var(--gold2)}
+.quiz-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff}
+.quiz-btn.ghost:hover{border-color:var(--gold2);color:var(--gold2)}
+
+/* Result Card */
+.result-card{display:none;background:rgba(255,255,255,.05);border:1px solid rgba(200,150,42,.3);padding:2rem;margin-top:1rem}
+.result-card.show{display:block}
+.result-badge{background:var(--gold);color:var(--deep);display:inline-block;padding:.3rem .8rem;font-size:.6rem;letter-spacing:.15em;font-weight:800;text-transform:uppercase;margin-bottom:1rem}
+.result-name{font-family:'Instrument Serif',serif;font-size:1.6rem;color:#fff;margin-bottom:.5rem}
+.result-match{font-size:.75rem;color:var(--gold2);font-weight:700;margin-bottom:1rem;letter-spacing:.05em}
+.result-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.rtag{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:.25rem .7rem;font-size:.65rem;color:rgba(255,255,255,.6);letter-spacing:.07em}
+.finder-visual{position:relative}
+.program-cards{display:flex;flex-direction:column;gap:1rem}
+.prog-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:1.5rem;display:flex;align-items:center;gap:1.2rem;transition:all .3s;cursor:none}
+.prog-card:hover{background:rgba(200,150,42,.08);border-color:rgba(200,150,42,.3);transform:translateX(8px)}
+.prog-icon{width:48px;height:48px;background:rgba(200,150,42,.15);border:1px solid rgba(200,150,42,.25);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.prog-name{font-weight:700;font-size:.9rem;color:#fff;margin-bottom:.2rem}
+.prog-detail{font-size:.7rem;color:rgba(255,255,255,.45);letter-spacing:.05em}
+.prog-arrow{margin-left:auto;color:var(--gold);opacity:0;transition:opacity .2s}
+.prog-card:hover .prog-arrow{opacity:1}
+
+/* ═══════════════════════════════════════
+   CAREER PATH VISUALIZER
+═══════════════════════════════════════ */
+.career-section{background:var(--bg2);overflow:hidden}
+.career-layout{display:grid;grid-template-columns:280px 1fr;gap:3rem;margin-top:3rem}
+.career-courses{display:flex;flex-direction:column;gap:.6rem}
+.course-btn{background:#fff;border:1.5px solid var(--border);padding:1rem 1.2rem;text-align:left;display:flex;align-items:center;gap:.8rem;transition:all .2s;cursor:none}
+.course-btn:hover,.course-btn.active{border-color:var(--deep);background:var(--deep);color:#fff}
+.course-btn .c-icon{font-size:1.2rem;width:32px;text-align:center;flex-shrink:0}
+.course-btn .c-name{font-size:.82rem;font-weight:700;color:var(--ink)}
+.course-btn.active .c-name,.course-btn:hover .c-name{color:#fff}
+.course-btn .c-dept{font-size:.62rem;color:var(--muted);letter-spacing:.05em}
+.course-btn.active .c-dept{color:rgba(255,255,255,.5)}
+
+.career-viz{background:#fff;border:1px solid var(--border);padding:2.5rem;min-height:480px;position:relative;overflow:hidden}
+.viz-title{font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--ink);margin-bottom:.3rem}
+.viz-sub{font-size:.75rem;color:var(--muted);margin-bottom:2.5rem}
+
+/* Flowchart */
+.flow-wrap{overflow-x:auto;padding-bottom:1rem}
+.flow-tree{display:flex;flex-direction:column;gap:0}
+.flow-level{display:flex;gap:1.5rem;justify-content:flex-start;margin-bottom:0;position:relative}
+.flow-node{background:var(--bg);border:2px solid var(--border);padding:.8rem 1.2rem;min-width:155px;text-align:center;position:relative;opacity:0;transform:translateY(15px);transition:all .4s;cursor:none;flex-shrink:0}
+.flow-node.visible{opacity:1;transform:translateY(0)}
+.flow-node:hover{border-color:var(--deep);background:var(--deep);color:#fff}
+.flow-node.root{background:var(--deep);border-color:var(--deep);color:#fff;min-width:auto;align-self:flex-start}
+.flow-node.highlight{border-color:var(--gold);background:rgba(200,150,42,.08)}
+.flow-node.top{border-color:var(--accent);background:rgba(232,69,69,.06)}
+.fn-icon{font-size:1.1rem;margin-bottom:.3rem}
+.fn-title{font-size:.75rem;font-weight:700;line-height:1.2}
+.fn-salary{font-size:.6rem;color:var(--green);font-weight:700;margin-top:.2rem}
+.flow-node:hover .fn-salary{color:rgba(255,255,255,.7)}
+.flow-connector{display:flex;align-items:center;justify-content:flex-start;padding:.4rem 0 .4rem 77px;gap:0}
+.flow-connector.multi{justify-content:flex-start;padding-left:77px}
+.fc-line{height:2px;width:24px;background:linear-gradient(to right,var(--deep),var(--gold));flex-shrink:0}
+.fc-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.fc-branch{display:flex;gap:1.5rem}
+.fc-v{width:2px;height:20px;background:var(--border);margin:0 auto}
+.fc-h-row{display:flex;align-items:center;gap:0}
+.fc-h-seg{height:2px;flex:1;background:var(--border)}
+.fc-tip{width:2px;height:12px;background:var(--border);margin:0 auto}
+
+.viz-legend{display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap}
+.vleg{display:flex;align-items:center;gap:.5rem;font-size:.65rem;color:var(--muted);font-weight:600}
+.vleg-dot{width:10px;height:10px;border-radius:50%}
+
+/* ═══════════════════════════════════════
+   ALUMNI SUCCESS STORIES
+═══════════════════════════════════════ */
+.alumni-section{background:var(--bg);overflow:hidden}
+.alumni-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:1.5rem}
+.alumni-filter{display:flex;gap:.5rem}
+.filter-btn{background:#fff;border:1.5px solid var(--border);padding:.45rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);cursor:none;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:var(--deep);border-color:var(--deep);color:#fff}
+
+.alumni-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.alumni-card{background:#fff;border:1px solid var(--border);overflow:hidden;transition:all .3s;cursor:none;position:relative}
+.alumni-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(15,14,11,.12)}
+.alumni-card-top{padding:2rem 2rem 1rem;position:relative}
+.alumni-company-badge{position:absolute;top:1.2rem;right:1.2rem;background:var(--bg);border:1px solid var(--border);padding:.35rem .7rem;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.alumni-card.featured .alumni-company-badge{background:var(--gold);border-color:var(--gold);color:#fff}
+.alumni-avatar{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:1.4rem;font-style:italic;margin-bottom:1.2rem;border:3px solid var(--bg2)}
+.alumni-name{font-weight:800;font-size:1rem;color:var(--ink);margin-bottom:.15rem}
+.alumni-role{font-size:.72rem;color:var(--gold);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.1rem}
+.alumni-company{font-size:.72rem;color:var(--muted);font-weight:600}
+.alumni-divider{height:1px;background:var(--border);margin:1rem 0}
+.alumni-quote{padding:0 2rem 1.5rem;font-family:'Instrument Serif',serif;font-style:italic;font-size:.95rem;color:var(--ink2);line-height:1.65;position:relative}
+.alumni-quote::before{content:'"';position:absolute;top:-8px;left:1.5rem;font-size:2.5rem;color:var(--gold);opacity:.4;font-family:'Instrument Serif',serif;line-height:1}
+.alumni-card-footer{padding:1rem 2rem;background:var(--bg);display:flex;align-items:center;gap:.8rem;border-top:1px solid var(--border)}
+.alumni-batch{font-size:.62rem;color:var(--muted);font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.alumni-course-tag{background:rgba(26,39,68,.08);color:var(--deep);padding:.2rem .6rem;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.alumni-achievement{display:flex;align-items:center;gap:.4rem;margin-left:auto;font-size:.65rem;color:var(--green);font-weight:700}
+
+/* FEATURED LARGE CARD */
+.alumni-card.large{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr}
+.alumni-card.large .alumni-card-top{padding:2.5rem;border-right:1px solid var(--border);display:flex;flex-direction:column}
+.alumni-card.large .alumni-avatar{width:80px;height:80px;font-size:2rem;margin-bottom:1.5rem}
+.alumni-card.large .alumni-quote{padding:2.5rem;font-size:1.05rem;display:flex;flex-direction:column;justify-content:center}
+.alumni-impact-number{font-family:'Instrument Serif',serif;font-size:2.8rem;color:var(--gold);line-height:1;margin-top:1.5rem}
+.alumni-impact-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600}
+
+/* ═══════════════════════════════════════
+   VIRTUAL CAMPUS TOUR
+═══════════════════════════════════════ */
+.tour-section{background:var(--deep);color:#fff;position:relative;overflow:hidden}
+.tour-section::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:30px 30px;pointer-events:none}
+.tour-layout{display:grid;grid-template-columns:1fr 380px;gap:3rem;position:relative;z-index:1}
+.tour-section .section-eyebrow{color:var(--gold2)}
+.tour-section .section-title{color:#fff}
+.tour-section .section-sub{color:rgba(255,255,255,.5)}
+
+.tour-viewer{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);height:440px;position:relative;overflow:hidden;margin-top:2.5rem}
+.tour-scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a2744,#0f0e1a);transition:all .5s ease}
+.tour-scene-inner{text-align:center}
+.tour-scene-emoji{font-size:5rem;display:block;margin-bottom:1rem;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.tour-scene-name{font-family:'Instrument Serif',serif;font-size:1.5rem;color:#fff;margin-bottom:.4rem}
+.tour-scene-desc{font-size:.75rem;color:rgba(255,255,255,.4);max-width:280px;margin:0 auto}
+.tour-nav-btns{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:.6rem}
+.tour-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;cursor:none}
+.tour-btn:hover,.tour-btn.active-btn{background:var(--gold);border-color:var(--gold);color:var(--deep)}
+.tour-controls{position:absolute;top:1.2rem;right:1.2rem;display:flex;gap:.5rem}
+.tour-ctrl{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);padding:.4rem .8rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;cursor:none;transition:all .2s}
+.tour-ctrl:hover{background:var(--gold);border-color:var(--gold);color:var(--deep)}
+
+.tour-spots{display:flex;flex-direction:column;gap:.8rem;margin-top:2.5rem;max-height:400px;overflow-y:auto}
+.tour-spot{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:1.1rem 1.2rem;cursor:none;transition:all .2s;display:flex;align-items:center;gap:1rem}
+.tour-spot:hover,.tour-spot.active-spot{background:rgba(200,150,42,.1);border-color:rgba(200,150,42,.3)}
+.spot-icon{font-size:1.4rem;width:36px;text-align:center;flex-shrink:0}
+.spot-name{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:.1rem}
+.spot-type{font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.06em;text-transform:uppercase}
+.spot-arrow{margin-left:auto;color:var(--gold);opacity:0;font-size:.8rem;transition:opacity .2s}
+.tour-spot:hover .spot-arrow,.tour-spot.active-spot .spot-arrow{opacity:1}
+
+/* ═══════════════════════════════════════
+   INTERACTIVE MAP
+═══════════════════════════════════════ */
+.map-section{background:var(--bg2)}
+.map-layout{display:grid;grid-template-columns:320px 1fr;gap:2.5rem;margin-top:3rem}
+.map-categories{display:flex;flex-direction:column;gap:.5rem}
+.map-cat{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;background:#fff;border:1.5px solid var(--border);cursor:none;transition:all .2s}
+.map-cat:hover,.map-cat.active{background:var(--deep);border-color:var(--deep)}
+.cat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.cat-name{font-size:.8rem;font-weight:700;color:var(--ink);transition:color .2s}
+.map-cat:hover .cat-name,.map-cat.active .cat-name{color:#fff}
+.cat-count{margin-left:auto;font-size:.65rem;color:var(--muted);font-weight:600;transition:color .2s}
+.map-cat:hover .cat-count,.map-cat.active .cat-count{color:rgba(255,255,255,.5)}
+
+.map-canvas{background:#fff;border:1px solid var(--border);position:relative;height:480px;overflow:hidden}
+.map-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(15,14,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(15,14,11,.04) 1px,transparent 1px);background-size:40px 40px}
+.map-building{position:absolute;cursor:none;transition:all .2s}
+.map-building:hover .mb-box{transform:scale(1.1);box-shadow:0 8px 25px rgba(15,14,11,.15)}
+.mb-box{width:60px;height:50px;background:var(--deep);display:flex;align-items:center;justify-content:center;font-size:1.3rem;transition:all .25s;position:relative}
+.mb-box::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:6px solid var(--deep)}
+.map-building.cat-academic .mb-box{background:#1a2744}
+.map-building.cat-sports .mb-box{background:#2d8c4e}
+.map-building.cat-admin .mb-box{background:#c8962a}
+.map-building.cat-hostel .mb-box{background:#8c4a2a}
+.map-building.cat-lab .mb-box{background:#4a2d8c}
+.mb-label{text-align:center;font-size:.55rem;font-weight:700;color:var(--ink);margin-top:.5rem;white-space:nowrap;max-width:70px;overflow:hidden;text-overflow:ellipsis}
+.map-tooltip{position:absolute;background:var(--ink);color:#fff;padding:.7rem 1rem;font-size:.72rem;border-radius:0;pointer-events:none;z-index:10;white-space:nowrap;opacity:0;transition:opacity .2s;min-width:160px}
+.map-tooltip.show{opacity:1}
+
+/* ═══════════════════════════════════════
+   STATS COUNTER
+═══════════════════════════════════════ */
+.stats-section{background:var(--deep);padding:5rem 4rem}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid rgba(255,255,255,.1)}
+.stat-block{padding:3rem 2rem;text-align:center;border-right:1px solid rgba(255,255,255,.1);position:relative;overflow:hidden}
+.stat-block:last-child{border-right:none}
+.stat-block::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.stat-block:hover::after{transform:scaleX(1)}
+.stat-number{font-family:'Instrument Serif',serif;font-size:2.8rem;color:#fff;display:block;line-height:1}
+.stat-suffix{color:var(--gold2)}
+.stat-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.4);font-weight:700;margin-top:.5rem;display:block}
+
+/* ═══════════════════════════════════════
+   EVENTS
+═══════════════════════════════════════ */
+.events-section{background:var(--bg)}
+.events-layout{display:grid;grid-template-columns:1fr 380px;gap:3rem;margin-top:3rem}
+.event-list{display:flex;flex-direction:column;gap:1rem}
+.event-item{display:grid;grid-template-columns:80px 1fr auto;gap:1.5rem;align-items:center;background:#fff;border:1px solid var(--border);padding:1.5rem 2rem;transition:all .2s;cursor:none}
+.event-item:hover{border-color:var(--deep);transform:translateX(6px)}
+.ev-date{text-align:center}
+.ev-day{font-family:'Instrument Serif',serif;font-size:2.2rem;color:var(--gold);line-height:1}
+.ev-month{font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}
+.ev-title{font-weight:800;font-size:.95rem;color:var(--ink);margin-bottom:.25rem}
+.ev-meta{font-size:.7rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap}
+.ev-tag{background:var(--bg);border:1px solid var(--border);padding:.3rem .7rem;font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);white-space:nowrap;align-self:center}
+.ev-tag.upcoming{background:rgba(200,150,42,.1);border-color:rgba(200,150,42,.3);color:var(--gold)}
+
+.upcoming-card{background:var(--deep);padding:2.5rem;color:#fff;position:relative;overflow:hidden}
+.upcoming-card::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(200,150,42,.2) 0%,transparent 70%)}
+.uc-eyebrow{font-size:.62rem;letter-spacing:.2em;color:var(--gold2);text-transform:uppercase;font-weight:700;margin-bottom:.8rem}
+.uc-title{font-family:'Instrument Serif',serif;font-size:1.6rem;color:#fff;margin-bottom:1rem;line-height:1.2}
+.uc-date{display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.uc-loc{display:flex;align-items:center;gap:.6rem;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:2rem}
+.uc-timer{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:2rem}
+.uc-t{background:rgba(255,255,255,.06);padding:.8rem .5rem;text-align:center;border:1px solid rgba(255,255,255,.08)}
+.uc-t-num{font-family:'Instrument Serif',serif;font-size:1.6rem;color:var(--gold2);line-height:1}
+.uc-t-lbl{font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);font-weight:700}
+
+/* ═══════════════════════════════════════
+   RESEARCH
+═══════════════════════════════════════ */
+.research-section{background:var(--bg2)}
+.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.research-card{background:#fff;border:1px solid var(--border);padding:2rem;position:relative;overflow:hidden;cursor:none;transition:all .3s}
+.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--border);transition:background .3s}
+.research-card:hover::before{background:var(--gold)}
+.research-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.rc-category{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.8rem}
+.rc-title{font-family:'Instrument Serif',serif;font-size:1.15rem;color:var(--ink);margin-bottom:.8rem;line-height:1.35}
+.rc-authors{font-size:.7rem;color:var(--muted);margin-bottom:1.2rem;font-weight:600}
+.rc-abstract{font-size:.78rem;color:var(--ink2);line-height:1.7;margin-bottom:1.5rem}
+.rc-footer{display:flex;align-items:center;justify-content:space-between}
+.rc-citations{font-size:.65rem;color:var(--muted);font-weight:600}
+.rc-link{font-size:.68rem;font-weight:700;color:var(--deep);letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;gap:.3rem}
+.rc-link:hover{color:var(--gold)}
+
+/* ═══════════════════════════════════════
+   FACULTY SPOTLIGHT
+═══════════════════════════════════════ */
+.faculty-section{background:var(--bg)}
+.faculty-scroll{display:flex;gap:1.5rem;margin-top:3rem;overflow-x:auto;padding-bottom:1rem}
+.faculty-scroll::-webkit-scrollbar{height:4px}
+.faculty-scroll::-webkit-scrollbar-track{background:var(--border)}
+.faculty-scroll::-webkit-scrollbar-thumb{background:var(--deep)}
+.faculty-card{background:#fff;border:1px solid var(--border);padding:2rem;min-width:240px;cursor:none;transition:all .3s;flex-shrink:0}
+.faculty-card:hover{border-color:var(--deep);transform:translateY(-4px);box-shadow:var(--shadow)}
+.fac-avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:1.5rem;font-style:italic;margin-bottom:1.2rem;border:3px solid var(--bg2)}
+.fac-name{font-weight:800;font-size:.95rem;color:var(--ink);margin-bottom:.2rem}
+.fac-title{font-size:.7rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.15rem}
+.fac-dept{font-size:.7rem;color:var(--muted);font-weight:600;margin-bottom:1rem}
+.fac-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.fac-tag{background:var(--bg);border:1px solid var(--border);padding:.2rem .5rem;font-size:.58rem;color:var(--muted);font-weight:600;letter-spacing:.05em}
+
+/* ═══════════════════════════════════════
+   ADMISSIONS TIMELINE
+═══════════════════════════════════════ */
+.admissions-section{background:var(--deep);color:#fff;overflow:hidden;position:relative}
+.admissions-section::before{content:'';position:absolute;bottom:0;left:0;right:0;height:300px;background:linear-gradient(to top,rgba(200,150,42,.05),transparent)}
+.adm-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;position:relative;z-index:1}
+.admissions-section .section-eyebrow{color:var(--gold2)}
+.admissions-section .section-title{color:#fff}
+.admissions-section .section-sub{color:rgba(255,255,255,.5)}
+.timeline{margin-top:2.5rem;position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(200,150,42,.1))}
+.tl-item{position:relative;padding-bottom:2.5rem;padding-left:2rem}
+.tl-dot{position:absolute;left:-2.5rem;top:.2rem;width:14px;height:14px;background:var(--gold);border:3px solid var(--deep)}
+.tl-date{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold2);font-weight:700;margin-bottom:.4rem}
+.tl-title{font-weight:800;font-size:.95rem;color:#fff;margin-bottom:.3rem}
+.tl-desc{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.65}
+.adm-checklist{margin-top:2.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:2rem}
+.adm-check-title{font-family:'Instrument Serif',serif;font-size:1.2rem;color:#fff;margin-bottom:1.5rem}
+.check-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem;color:rgba(255,255,255,.6);font-weight:500}
+.check-item:last-child{border-bottom:none}
+.check-icon{font-size:1rem;flex-shrink:0}
+
+/* ═══════════════════════════════════════
+   NEWS
+═══════════════════════════════════════ */
+.news-section{background:var(--bg2)}
+.news-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1.5rem;margin-top:3rem}
+.news-card{background:#fff;border:1px solid var(--border);overflow:hidden;cursor:none;transition:all .3s}
+.news-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.news-img{height:200px;background:linear-gradient(135deg,var(--deep),var(--deep2));display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.news-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(15,14,11,.3))}
+.news-card.featured .news-img{height:240px;font-size:4rem}
+.news-body{padding:1.5rem}
+.news-cat{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.6rem}
+.news-title{font-family:'Instrument Serif',serif;font-size:1.1rem;color:var(--ink);line-height:1.3;margin-bottom:.7rem}
+.news-card.featured .news-title{font-size:1.35rem}
+.news-meta{font-size:.68rem;color:var(--muted);font-weight:600;display:flex;gap:1rem}
+
+/* ═══════════════════════════════════════
+   CHATBOT
+═══════════════════════════════════════ */
+.chat-fab{position:fixed;bottom:2rem;right:2rem;z-index:400;display:flex;flex-direction:column;align-items:flex-end;gap:.8rem}
+.chat-toggle{width:56px;height:56px;background:var(--deep);border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:none;transition:all .25s;position:relative}
+.chat-toggle:hover{background:var(--gold);border-color:var(--deep)}
+.chat-badge{position:absolute;top:-5px;right:-5px;width:16px;height:16px;background:var(--accent);border-radius:50%;border:2px solid var(--bg);font-size:.5rem;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.chat-window{width:340px;background:#fff;border:1.5px solid var(--border);box-shadow:0 20px 60px rgba(15,14,11,.15);display:none;flex-direction:column;height:480px}
+.chat-window.open{display:flex}
+.chat-header{background:var(--deep);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.chat-avatar{width:36px;height:36px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.chat-name{font-weight:800;font-size:.85rem;color:#fff}
+.chat-status{font-size:.62rem;color:var(--gold2);display:flex;align-items:center;gap:.3rem}
+.chat-status-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:blink 1.5s infinite}
+.chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.1rem;cursor:none;transition:color .2s;padding:.2rem}
+.chat-close:hover{color:#fff}
+.chat-body{flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:.8rem;background:var(--bg)}
+.chat-body::-webkit-scrollbar{width:4px}
+.chat-body::-webkit-scrollbar-thumb{background:var(--border)}
+.chat-msg{max-width:82%;font-size:.8rem;line-height:1.55}
+.chat-msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--border);padding:.7rem 1rem;font-weight:500;color:var(--ink)}
+.chat-msg.user{align-self:flex-end;background:var(--deep);color:#fff;padding:.7rem 1rem;font-weight:500}
+.chat-suggestions{display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem}
+.chat-sug{background:#fff;border:1px solid var(--border);padding:.5rem .8rem;font-size:.72rem;color:var(--deep);font-weight:700;cursor:none;transition:all .2s;text-align:left}
+.chat-sug:hover{background:var(--deep);color:#fff;border-color:var(--deep)}
+.chat-footer{padding:.8rem 1rem;border-top:1px solid var(--border);display:flex;gap:.5rem;flex-shrink:0}
+.chat-input{flex:1;border:1.5px solid var(--border);padding:.6rem .9rem;font-size:.78rem;font-family:'Cabinet Grotesk',sans-serif;color:var(--ink);outline:none;background:#fff;transition:border-color .2s}
+.chat-input:focus{border-color:var(--deep)}
+.chat-send{background:var(--deep);color:#fff;border:none;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:none;transition:background .2s;flex-shrink:0}
+.chat-send:hover{background:var(--gold)}
+.typing-indicator{display:flex;gap:.3rem;align-items:center;padding:.7rem 1rem;background:#fff;border:1px solid var(--border);align-self:flex-start;max-width:70px}
+.typing-indicator span{width:6px;height:6px;background:var(--muted);border-radius:50%;animation:typing .9s infinite}
+.typing-indicator span:nth-child(2){animation-delay:.2s}
+.typing-indicator span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-4px);opacity:1}}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer{background:var(--ink);color:#fff;padding:5rem 4rem 2rem}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
+.footer-brand .logo-mark{background:var(--gold);margin-bottom:1.2rem}
+.footer-desc{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.75;max-width:280px;margin-bottom:1.5rem;font-weight:500}
+.footer-social{display:flex;gap:.6rem}
+.social-btn{width:36px;height:36px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:rgba(255,255,255,.4);cursor:none;transition:all .2s}
+.social-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--deep)}
+.footer-col-title{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:700;margin-bottom:1.2rem}
+.footer-links{display:flex;flex-direction:column;gap:.6rem;list-style:none}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.45);font-weight:500;transition:color .2s}
+.footer-links a:hover{color:var(--gold2)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.25);font-weight:500}
+.footer-legal{display:flex;gap:2rem}
+.footer-legal a{font-size:.72rem;color:rgba(255,255,255,.25);font-weight:500;transition:color .2s}
+.footer-legal a:hover{color:rgba(255,255,255,.6)}
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(24px);transition:all .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ═══════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════ */
+.back-top{position:fixed;bottom:2rem;left:2rem;width:44px;height:44px;background:var(--deep);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;cursor:none;opacity:0;pointer-events:none;transition:all .3s;z-index:300}
+.back-top.show{opacity:1;pointer-events:all}
+.back-top:hover{background:var(--gold);border-color:var(--gold);color:var(--deep)}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;padding-top:7rem;text-align:center}
+  .hero-right{display:none}
+  .hero-stats{justify-content:center}
+  .hero-sub{margin:0 auto 2.5rem}
+  .finder-grid,.career-layout,.tour-layout,.map-layout,.adm-layout,.events-layout,.news-grid{grid-template-columns:1fr}
+  .alumni-card.large{grid-column:span 1;grid-template-columns:1fr}
+  .alumni-card.large .alumni-card-top{border-right:none;border-bottom:1px solid var(--border)}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  section{padding:4rem 1.5rem}
+  nav{padding:1rem 1.5rem}
+  .alumni-grid{grid-template-columns:1fr}
+  .research-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .tracks-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .chat-window{width:calc(100vw - 2rem)}
+  .hero-actions{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <div class="logo-mark">N</div>
+    <div>
+      <div class="logo-text">NEXUS UNIVERSITY</div>
+      <span class="logo-sub">Est. 1968 · Excellence in Innovation</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#academics">Academics</a></li>
+    <li><a href="#alumni">Alumni</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#campus">Campus</a></li>
+    <li><a href="#admissions">Admissions</a></li>
+    <li><a href="#events">Events</a></li>
+  </ul>
+  <button class="nav-cta">Apply Now →</button>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg-text">NEXUS</div>
+  <div class="hero-dots"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Applications Open · Class of 2029
+    </div>
+    <h1 class="hero-title">
+      Where bold<br>
+      <em>minds</em> build<br>
+      <strong>tomorrow.</strong>
+    </h1>
+    <p class="hero-sub">NEXUS University is home to 28,000 students across 180+ programs. We don't just teach — we equip you to reshape industries, lead movements, and build what doesn't exist yet.</p>
+    <div class="hero-actions">
+      <a href="#admissions" class="btn-dark">Explore Admissions</a>
+      <a href="#campus" class="btn-outline">▶ Virtual Tour</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hstat-num">94%</span>
+        <span class="hstat-lbl">Placement Rate</span>
+      </div>
+      <div>
+        <span class="hstat-num">#7</span>
+        <span class="hstat-lbl">National Rank</span>
+      </div>
+      <div>
+        <span class="hstat-num">180+</span>
+        <span class="hstat-lbl">Programs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card-stack">
+      <div class="hero-main-card">
+        <div class="hero-card-img">🏛️</div>
+        <div class="hero-card-overlay"></div>
+        <div class="hero-card-content">
+          <div class="hcard-label">Campus Life</div>
+          <div class="hcard-title">A 400-acre campus built for curiosity.</div>
+          <a href="#campus" class="hcard-cta">Explore Campus →</a>
+        </div>
+      </div>
+      <div class="hero-float-card float-card-1">
+        <div class="float-num">$75M</div>
+        <div class="float-lbl">Research Funding 2025</div>
+      </div>
+      <div class="hero-float-card float-card-2">
+        <div class="float-num">4,200+</div>
+        <div class="float-lbl">Alumni at Fortune 500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-inner" id="mq">
+    <div class="marquee-item">Google <span class="sep">✦</span></div>
+    <div class="marquee-item">Microsoft <span class="sep">✦</span></div>
+    <div class="marquee-item">ISRO <span class="sep">✦</span></div>
+    <div class="marquee-item">Stanford Collaboration <span class="sep">✦</span></div>
+    <div class="marquee-item">McKinsey & Company <span class="sep">✦</span></div>
+    <div class="marquee-item">Amazon <span class="sep">✦</span></div>
+    <div class="marquee-item">Goldman Sachs <span class="sep">✦</span></div>
+    <div class="marquee-item">Tesla <span class="sep">✦</span></div>
+    <div class="marquee-item">NASSCOM Partner <span class="sep">✦</span></div>
+    <div class="marquee-item">Anthropic <span class="sep">✦</span></div>
+    <div class="marquee-item">OpenAI <span class="sep">✦</span></div>
+    <div class="marquee-item">Adobe <span class="sep">✦</span></div>
+    <div class="marquee-item">Google <span class="sep">✦</span></div>
+    <div class="marquee-item">Microsoft <span class="sep">✦</span></div>
+    <div class="marquee-item">ISRO <span class="sep">✦</span></div>
+    <div class="marquee-item">Stanford Collaboration <span class="sep">✦</span></div>
+    <div class="marquee-item">McKinsey & Company <span class="sep">✦</span></div>
+    <div class="marquee-item">Amazon <span class="sep">✦</span></div>
+    <div class="marquee-item">Goldman Sachs <span class="sep">✦</span></div>
+    <div class="marquee-item">Tesla <span class="sep">✦</span></div>
+    <div class="marquee-item">NASSCOM Partner <span class="sep">✦</span></div>
+    <div class="marquee-item">Anthropic <span class="sep">✦</span></div>
+    <div class="marquee-item">OpenAI <span class="sep">✦</span></div>
+    <div class="marquee-item">Adobe <span class="sep">✦</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SMART COURSE FINDER ═══════════════════ -->
+<section class="finder-section" id="academics">
+  <div class="finder-grid">
+    <div>
+      <div class="section-eyebrow">Smart Course Finder</div>
+      <h2 class="section-title">Find the program <em style="font-style:italic;color:var(--gold2)">made for you.</em></h2>
+      <p class="section-sub">Answer 3 quick questions and we'll match you to the perfect program based on your interests, strengths, and goals.</p>
+
+      <div class="quiz-flow" id="quizFlow">
+        <div class="quiz-progress" id="quizProg">
+          <div class="qprog-dot" id="pd1"></div>
+          <div class="qprog-dot" id="pd2"></div>
+          <div class="qprog-dot" id="pd3"></div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="quiz-step active" id="step1">
+          <div class="quiz-q">What excites you most?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="selectOpt(this,'interest','tech')"><span class="quiz-opt-icon">💻</span>Building tech & software</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'interest','science')"><span class="quiz-opt-icon">🔬</span>Science & discovery</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'interest','business')"><span class="quiz-opt-icon">📈</span>Business & strategy</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'interest','design')"><span class="quiz-opt-icon">🎨</span>Design & creativity</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="quiz-step" id="step2">
+          <div class="quiz-q">How do you prefer to work?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="selectOpt(this,'style','solo')"><span class="quiz-opt-icon">🧘</span>Independently, deep focus</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'style','team')"><span class="quiz-opt-icon">🤝</span>In teams, collaborative</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'style','field')"><span class="quiz-opt-icon">🌍</span>Out in the field, hands-on</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'style','lead')"><span class="quiz-opt-icon">🚀</span>Leading & building things</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="quiz-step" id="step3">
+          <div class="quiz-q">What's your ultimate goal?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="selectOpt(this,'goal','job')"><span class="quiz-opt-icon">💼</span>Land a dream job</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'goal','startup')"><span class="quiz-opt-icon">🦄</span>Start my own company</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'goal','research')"><span class="quiz-opt-icon">🏆</span>Contribute to research</button>
+            <button class="quiz-opt" onclick="selectOpt(this,'goal','impact')"><span class="quiz-opt-icon">🌱</span>Create social impact</button>
+          </div>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="quiz-btn ghost" id="qBack" onclick="quizBack()" style="display:none">← Back</button>
+          <button class="quiz-btn" id="qNext" onclick="quizNext()">Next →</button>
+        </div>
+
+        <!-- Result -->
+        <div class="result-card" id="quizResult">
+          <div class="result-badge">Best Match · 96%</div>
+          <div class="result-name" id="resultName">B.Tech Computer Science & AI</div>
+          <div class="result-match" id="resultMatch">Perfect match based on your answers</div>
+          <div class="result-tags" id="resultTags"></div>
+          <a href="#" class="quiz-btn">Explore Program →</a>
+          <button class="quiz-btn ghost" onclick="restartQuiz()" style="margin-left:.5rem">Retake Quiz</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="finder-visual">
+      <div class="section-eyebrow" style="color:rgba(255,255,255,.3);font-size:.6rem">Featured Programs</div>
+      <div class="program-cards">
+        <div class="prog-card">
+          <div class="prog-icon">💻</div>
+          <div><div class="prog-name">B.Tech Computer Science & AI</div><div class="prog-detail">4 Years · 240 Seats · ₹1.8L/yr</div></div>
+          <div class="prog-arrow">→</div>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🧬</div>
+          <div><div class="prog-name">B.Tech Biotechnology</div><div class="prog-detail">4 Years · 120 Seats · ₹1.6L/yr</div></div>
+          <div class="prog-arrow">→</div>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">⚡</div>
+          <div><div class="prog-name">B.Tech Electrical Engineering</div><div class="prog-detail">4 Years · 180 Seats · ₹1.5L/yr</div></div>
+          <div class="prog-arrow">→</div>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">📊</div>
+          <div><div class="prog-name">MBA Business Analytics</div><div class="prog-detail">2 Years · 90 Seats · ₹2.2L/yr</div></div>
+          <div class="prog-arrow">→</div>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🎨</div>
+          <div><div class="prog-name">B.Des Interaction Design</div><div class="prog-detail">4 Years · 60 Seats · ₹1.4L/yr</div></div>
+          <div class="prog-arrow">→</div>
+        </div>
+        <div class="prog-card">
+          <div class="prog-icon">🏗️</div>
+          <div><div class="prog-name">B.Tech Civil Engineering</div><div class="prog-detail">4 Years · 150 Seats · ₹1.3L/yr</div></div>
+          <div class="prog-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CAREER PATH VISUALIZER ═══════════════════ -->
+<section class="career-section" id="careers">
+  <div class="section-eyebrow">Career Path Visualizer</div>
+  <h2 class="section-title">Where will your degree <strong>take you?</strong></h2>
+  <p class="section-sub">Select a program and watch your future career paths unfold as an animated flowchart — with salary benchmarks and transition routes.</p>
+
+  <div class="career-layout">
+    <div class="career-courses">
+      <button class="course-btn active" onclick="showCareer(this,'cse')" data-course="cse">
+        <span class="c-icon">💻</span>
+        <div><div class="c-name">B.Tech CSE & AI</div><div class="c-dept">School of Engineering</div></div>
+      </button>
+      <button class="course-btn" onclick="showCareer(this,'bio')" data-course="bio">
+        <span class="c-icon">🧬</span>
+        <div><div class="c-name">B.Tech Biotech</div><div class="c-dept">School of Sciences</div></div>
+      </button>
+      <button class="course-btn" onclick="showCareer(this,'mba')" data-course="mba">
+        <span class="c-icon">📊</span>
+        <div><div class="c-name">MBA Analytics</div><div class="c-dept">Business School</div></div>
+      </button>
+      <button class="course-btn" onclick="showCareer(this,'design')" data-course="design">
+        <span class="c-icon">🎨</span>
+        <div><div class="c-name">B.Des Interaction</div><div class="c-dept">School of Design</div></div>
+      </button>
+      <button class="course-btn" onclick="showCareer(this,'ee')" data-course="ee">
+        <span class="c-icon">⚡</span>
+        <div><div class="c-name">B.Tech EE</div><div class="c-dept">School of Engineering</div></div>
+      </button>
+    </div>
+
+    <div class="career-viz">
+      <div class="viz-title" id="vizTitle">B.Tech CSE & AI</div>
+      <div class="viz-sub" id="vizSub">4-year program · 94% placement rate · Avg. ₹18 LPA starting CTC</div>
+      <div class="flow-wrap">
+        <div id="flowChart"></div>
+      </div>
+      <div class="viz-legend">
+        <div class="vleg"><div class="vleg-dot" style="background:var(--deep)"></div>Entry Level</div>
+        <div class="vleg"><div class="vleg-dot" style="background:var(--gold)"></div>Mid-Career</div>
+        <div class="vleg"><div class="vleg-dot" style="background:var(--accent)"></div>Senior / Leadership</div>
+        <div class="vleg"><div class="vleg-dot" style="background:var(--green)"></div>Entrepreneurship</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ALUMNI SUCCESS ═══════════════════ -->
+<section class="alumni-section" id="alumni">
+  <div class="alumni-header">
+    <div>
+      <div class="section-eyebrow">Alumni Success Stories</div>
+      <h2 class="section-title">They studied here.<br><strong>Now they shape the world.</strong></h2>
+    </div>
+    <div class="alumni-filter">
+      <button class="filter-btn active" onclick="filterAlumni(this,'all')">All</button>
+      <button class="filter-btn" onclick="filterAlumni(this,'tech')">Tech</button>
+      <button class="filter-btn" onclick="filterAlumni(this,'founder')">Founders</button>
+      <button class="filter-btn" onclick="filterAlumni(this,'research')">Research</button>
+    </div>
+  </div>
+
+  <div class="alumni-grid" id="alumniGrid">
+
+    <!-- FEATURED LARGE -->
+    <div class="alumni-card large featured" data-cat="tech">
+      <div class="alumni-card-top">
+        <div class="alumni-company-badge">🏆 Top Alumni 2025</div>
+        <div class="alumni-avatar" style="background:linear-gradient(135deg,#1a2744,#4a6fa5);color:#fff">R</div>
+        <div class="alumni-name">Riya Mehta</div>
+        <div class="alumni-role">Senior AI Research Lead</div>
+        <div class="alumni-company">Google DeepMind · London, UK</div>
+        <div class="alumni-divider"></div>
+        <div style="font-size:.72rem;color:var(--muted);font-weight:600">B.Tech CSE, Batch 2018</div>
+        <div class="alumni-impact-number">4</div>
+        <div class="alumni-impact-label">Published Nature papers</div>
+      </div>
+      <div class="alumni-quote">
+        "NEXUS didn't just give me a degree — it gave me a hunger for problems nobody had solved yet. My final-year research project became the foundation of a paper that changed how we think about multi-modal AI. The faculty here treats students like colleagues, not numbers."
+        <br><br>
+        <a href="#" style="font-size:.72rem;font-weight:700;color:var(--deep);letter-spacing:.05em;text-transform:uppercase">Read Full Story →</a>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="alumni-card" data-cat="founder">
+      <div class="alumni-card-top">
+        <div class="alumni-company-badge">🚀 Startup Founder</div>
+        <div class="alumni-avatar" style="background:linear-gradient(135deg,#c8962a,#e8b84b);color:#fff">A</div>
+        <div class="alumni-name">Arjun Kapoor</div>
+        <div class="alumni-role">Co-Founder & CEO</div>
+        <div class="alumni-company">Kira Health · YC W23</div>
+      </div>
+      <div class="alumni-divider" style="margin:0 2rem"></div>
+      <div class="alumni-quote">"Dropped my ₹35 LPA Google offer to build Kira from a dorm room. Two years later, Series A, 80-person team, impacting 2M+ patients."</div>
+      <div class="alumni-card-footer">
+        <span class="alumni-batch">Batch 2020</span>
+        <span class="alumni-course-tag">CSE</span>
+        <span class="alumni-achievement">💰 $14M Raised</span>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="alumni-card" data-cat="tech">
+      <div class="alumni-card-top">
+        <div class="alumni-company-badge">💼 Placed at Microsoft</div>
+        <div class="alumni-avatar" style="background:linear-gradient(135deg,#2d8c4e,#42d275);color:#fff">S</div>
+        <div class="alumni-name">Sneha Varghese</div>
+        <div class="alumni-role">Principal Engineer</div>
+        <div class="alumni-company">Microsoft Azure · Seattle</div>
+      </div>
+      <div class="alumni-divider" style="margin:0 2rem"></div>
+      <div class="alumni-quote">"My internship became a full-time offer. NEXUS's industry-first curriculum meant I was ahead of peers from 12 other universities on Day 1."</div>
+      <div class="alumni-card-footer">
+        <span class="alumni-batch">Batch 2019</span>
+        <span class="alumni-course-tag">EE</span>
+        <span class="alumni-achievement">⭐ ₹52 LPA</span>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="alumni-card" data-cat="research">
+      <div class="alumni-card-top">
+        <div class="alumni-company-badge">🔬 Researcher</div>
+        <div class="alumni-avatar" style="background:linear-gradient(135deg,#4a2d8c,#8c5af5);color:#fff">P</div>
+        <div class="alumni-name">Dr. Priya Nair</div>
+        <div class="alumni-role">Climate Scientist</div>
+        <div class="alumni-company">NASA JPL · California</div>
+      </div>
+      <div class="alumni-divider" style="margin:0 2rem"></div>
+      <div class="alumni-quote">"My PhD work at NEXUS on atmospheric modelling is now part of NASA's climate prediction infrastructure. It started as a semester project."</div>
+      <div class="alumni-card-footer">
+        <span class="alumni-batch">Batch 2015</span>
+        <span class="alumni-course-tag">Physics</span>
+        <span class="alumni-achievement">🏅 NASA Award</span>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="alumni-card" data-cat="founder">
+      <div class="alumni-card-top">
+        <div class="alumni-company-badge">🦄 Unicorn Founder</div>
+        <div class="alumni-avatar" style="background:linear-gradient(135deg,#e84545,#f5a623);color:#fff">V</div>
+        <div class="alumni-name">Vikram Anand</div>
+        <div class="alumni-role">Founder & CTO</div>
+        <div class="alumni-company">Finplex · Unicorn 2024</div>
+      </div>
+      <div class="alumni-divider" style="margin:0 2rem"></div>
+      <div class="alumni-quote">"We built the first NEXUS unicorn. The entrepreneurship cell, the mentors, the lab access — NEXUS gave us an unfair advantage."</div>
+      <div class="alumni-card-footer">
+        <span class="alumni-batch">Batch 2017</span>
+        <span class="alumni-course-tag">MBA</span>
+        <span class="alumni-achievement">🦄 $1.2B Valuation</span>
+      </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="alumni-card" data-cat="tech">
+      <div class="alumni-card-top">
+        <div class="alumni-company-badge">💻 Placed at Amazon</div>
+        <div class="alumni-avatar" style="background:linear-gradient(135deg,#1a2744,#2d5fa6);color:#fff">K</div>
+        <div class="alumni-name">Kavya Reddy</div>
+        <div class="alumni-role">ML Engineer L6</div>
+        <div class="alumni-company">Amazon AWS · Bangalore</div>
+      </div>
+      <div class="alumni-divider" style="margin:0 2rem"></div>
+      <div class="alumni-quote">"Went from sitting in NLP labs at NEXUS to building recommendation systems used by 500M+ Amazon customers. The foundation here is unreal."</div>
+      <div class="alumni-card-footer">
+        <span class="alumni-batch">Batch 2021</span>
+        <span class="alumni-course-tag">CSE AI</span>
+        <span class="alumni-achievement">⭐ ₹44 LPA</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-block reveal">
+      <span class="stat-number"><span class="counter" data-target="28000">0</span><span class="stat-suffix">+</span></span>
+      <span class="stat-label">Students Enrolled</span>
+    </div>
+    <div class="stat-block reveal reveal-delay-1">
+      <span class="stat-number"><span class="counter" data-target="94">0</span><span class="stat-suffix">%</span></span>
+      <span class="stat-label">Placement Rate</span>
+    </div>
+    <div class="stat-block reveal reveal-delay-2">
+      <span class="stat-number"><span class="counter" data-target="180">0</span><span class="stat-suffix">+</span></span>
+      <span class="stat-label">Programs Offered</span>
+    </div>
+    <div class="stat-block reveal reveal-delay-3">
+      <span class="stat-number"><span class="counter" data-target="75">0</span><span class="stat-suffix">M</span></span>
+      <span class="stat-label">Research Funding ($)</span>
+    </div>
+    <div class="stat-block reveal reveal-delay-4">
+      <span class="stat-number"><span class="counter" data-target="4200">0</span><span class="stat-suffix">+</span></span>
+      <span class="stat-label">Alumni at Fortune 500</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ VIRTUAL CAMPUS TOUR ═══════════════════ -->
+<section class="tour-section" id="campus">
+  <div class="tour-layout">
+    <div>
+      <div class="section-eyebrow">Virtual Campus Tour</div>
+      <h2 class="section-title">Explore every corner of NEXUS.</h2>
+      <p class="section-sub">Walk through our 400-acre campus from anywhere in the world. Click on any location to take a virtual visit.</p>
+      <div class="tour-viewer">
+        <div class="tour-scene" id="tourScene">
+          <div class="tour-scene-inner">
+            <span class="tour-scene-emoji" id="sceneEmoji">🏛️</span>
+            <div class="tour-scene-name" id="sceneName">Main Academic Block</div>
+            <div class="tour-scene-desc" id="sceneDesc">12-floor iconic structure housing 80 lecture halls, faculty offices, and the Dean's suites. Built in 1972.</div>
+          </div>
+        </div>
+        <div class="tour-controls">
+          <button class="tour-ctrl" onclick="prevSpot()">← Prev</button>
+          <button class="tour-ctrl" onclick="nextSpot()">Next →</button>
+        </div>
+        <div class="tour-nav-btns" id="tourDots"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tour-spots" id="tourSpots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CAMPUS MAP ═══════════════════ -->
+<section class="map-section" id="map">
+  <div class="section-eyebrow">Interactive Campus Map</div>
+  <h2 class="section-title">Find your way <strong>around.</strong></h2>
+  <p class="section-sub">Explore buildings, labs, and facilities across our 400-acre campus. Click any building for details.</p>
+
+  <div class="map-layout">
+    <div>
+      <div class="map-categories" id="mapCats">
+        <div class="map-cat active" onclick="filterMap(this,'all')" style="padding:.6rem 1rem;font-size:.75rem;font-weight:800;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;background:none;border:none;cursor:default">Filter by type</div>
+        <div class="map-cat active" onclick="filterMap(this,'all')"><div class="cat-dot" style="background:var(--deep)"></div><span class="cat-name">All Buildings</span><span class="cat-count">18</span></div>
+        <div class="map-cat" onclick="filterMap(this,'cat-academic')"><div class="cat-dot" style="background:#1a2744"></div><span class="cat-name">Academic</span><span class="cat-count">6</span></div>
+        <div class="map-cat" onclick="filterMap(this,'cat-sports')"><div class="cat-dot" style="background:#2d8c4e"></div><span class="cat-name">Sports & Wellness</span><span class="cat-count">4</span></div>
+        <div class="map-cat" onclick="filterMap(this,'cat-admin')"><div class="cat-dot" style="background:#c8962a"></div><span class="cat-name">Administration</span><span class="cat-count">3</span></div>
+        <div class="map-cat" onclick="filterMap(this,'cat-hostel')"><div class="cat-dot" style="background:#8c4a2a"></div><span class="cat-name">Hostels</span><span class="cat-count">3</span></div>
+        <div class="map-cat" onclick="filterMap(this,'cat-lab')"><div class="cat-dot" style="background:#4a2d8c"></div><span class="cat-name">Research Labs</span><span class="cat-count">2</span></div>
+      </div>
+    </div>
+
+    <div class="map-canvas" id="mapCanvas">
+      <div class="map-bg-grid"></div>
+      <div class="map-tooltip" id="mapTip"></div>
+      <!-- Buildings placed via JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ RESEARCH ═══════════════════ -->
+<section class="research-section" id="research">
+  <div class="section-eyebrow">Research & Innovation</div>
+  <h2 class="section-title">Solving problems that <strong>matter.</strong></h2>
+  <p class="section-sub">NEXUS researchers are at the forefront of 12 core research verticals, with 340+ active projects and $75M in external funding.</p>
+  <div class="research-grid">
+    <div class="research-card reveal">
+      <div class="rc-category">AI & Machine Learning</div>
+      <div class="rc-title">Self-Supervised Vision Models for Low-Resource Medical Imaging</div>
+      <div class="rc-authors">Dr. Ananya Iyer, Dr. Rahul Desai et al.</div>
+      <div class="rc-abstract">A novel architecture achieving 94.7% accuracy on rare disease classification with only 200 labelled samples — published in Nature Medicine, 2025.</div>
+      <div class="rc-footer">
+        <span class="rc-citations">📄 182 citations</span>
+        <a href="#" class="rc-link">Read Paper →</a>
+      </div>
+    </div>
+    <div class="research-card reveal reveal-delay-1">
+      <div class="rc-category">Climate Science</div>
+      <div class="rc-title">Real-Time Carbon Sequestration Modelling Using Satellite Telemetry</div>
+      <div class="rc-authors">Dr. Priya Nair, Siddharth Rao</div>
+      <div class="rc-abstract">Deployed in partnership with ISRO; covers 2.3M sq km of forest canopy. Now feeding into India's national carbon accounting framework.</div>
+      <div class="rc-footer">
+        <span class="rc-citations">📄 94 citations</span>
+        <a href="#" class="rc-link">Read Paper →</a>
+      </div>
+    </div>
+    <div class="research-card reveal reveal-delay-2">
+      <div class="rc-category">Quantum Computing</div>
+      <div class="rc-title">Error Correction in Superconducting Qubits at Room Temperature</div>
+      <div class="rc-authors">Prof. K. Venkataraman et al.</div>
+      <div class="rc-abstract">A breakthrough result reducing qubit decoherence by 67% using novel topological error-correction codes. Patent pending, 2 spin-off companies in progress.</div>
+      <div class="rc-footer">
+        <span class="rc-citations">📄 211 citations</span>
+        <a href="#" class="rc-link">Read Paper →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FACULTY ═══════════════════ -->
+<section class="faculty-section">
+  <div class="section-eyebrow">Faculty Spotlight</div>
+  <h2 class="section-title">Learn from the <strong>best in the field.</strong></h2>
+  <p class="section-sub">Our 1,200+ faculty include Turing Award winners, Padma Shri awardees, and executives from global companies.</p>
+  <div class="faculty-scroll">
+    <div class="faculty-card"><div class="fac-avatar" style="background:linear-gradient(135deg,#1a2744,#4a6fa5);color:#fff">AK</div><div class="fac-name">Prof. Anil Kumar</div><div class="fac-title">Distinguished Professor</div><div class="fac-dept">Computer Science</div><div class="fac-tags"><span class="fac-tag">AI</span><span class="fac-tag">NLP</span><span class="fac-tag">CV</span></div></div>
+    <div class="faculty-card"><div class="fac-avatar" style="background:linear-gradient(135deg,#c8962a,#e8b84b);color:#fff">SR</div><div class="fac-name">Dr. Sheela Rao</div><div class="fac-title">Associate Professor</div><div class="fac-dept">Biotechnology</div><div class="fac-tags"><span class="fac-tag">CRISPR</span><span class="fac-tag">Genomics</span></div></div>
+    <div class="faculty-card"><div class="fac-avatar" style="background:linear-gradient(135deg,#2d8c4e,#42d275);color:#fff">MV</div><div class="fac-name">Prof. Mohan Vyas</div><div class="fac-title">Dean of Engineering</div><div class="fac-dept">Mechanical Engg</div><div class="fac-tags"><span class="fac-tag">Robotics</span><span class="fac-tag">CAD</span></div></div>
+    <div class="faculty-card"><div class="fac-avatar" style="background:linear-gradient(135deg,#4a2d8c,#8c5af5);color:#fff">TN</div><div class="fac-name">Dr. Tara Nair</div><div class="fac-title">Professor</div><div class="fac-dept">Physics</div><div class="fac-tags"><span class="fac-tag">Quantum</span><span class="fac-tag">Optics</span></div></div>
+    <div class="faculty-card"><div class="fac-avatar" style="background:linear-gradient(135deg,#e84545,#f5a623);color:#fff">RK</div><div class="fac-name">Prof. Ravi Krishnan</div><div class="fac-title">Entrepreneur-in-Res</div><div class="fac-dept">Business School</div><div class="fac-tags"><span class="fac-tag">Strategy</span><span class="fac-tag">VC</span></div></div>
+    <div class="faculty-card"><div class="fac-avatar" style="background:linear-gradient(135deg,#8c4a2a,#c87b4e);color:#fff">PJ</div><div class="fac-name">Dr. Priya Joshi</div><div class="fac-title">Assoc. Professor</div><div class="fac-dept">Design School</div><div class="fac-tags"><span class="fac-tag">UX</span><span class="fac-tag">Research</span></div></div>
+    <div class="faculty-card"><div class="fac-avatar" style="background:linear-gradient(135deg,#2a4a8c,#4a7af5);color:#fff">AS</div><div class="fac-name">Prof. Amit Sharma</div><div class="fac-title">Professor & Researcher</div><div class="fac-dept">Data Science</div><div class="fac-tags"><span class="fac-tag">ML</span><span class="fac-tag">Statistics</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ADMISSIONS ═══════════════════ -->
+<section class="admissions-section" id="admissions">
+  <div class="adm-layout">
+    <div>
+      <div class="section-eyebrow">Admissions 2026</div>
+      <h2 class="section-title">Your journey starts <em style="font-style:italic">here.</em></h2>
+      <p class="section-sub">Applications for the Class of 2029 are now open. We review holistically — your story matters as much as your scores.</p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Jan 15 – Mar 31, 2026</div><div class="tl-title">Applications Open</div><div class="tl-desc">Submit your application with academic records, SOP, and letters of recommendation.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">April 15 – April 25, 2026</div><div class="tl-title">Entrance Examination</div><div class="tl-desc">Online proctored exam covering aptitude, domain knowledge, and analytical reasoning.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">May 10 – May 20, 2026</div><div class="tl-title">Personal Interviews</div><div class="tl-desc">Selected candidates will be invited for a 20-minute interview with a faculty panel.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">June 1, 2026</div><div class="tl-title">Results & Offers</div><div class="tl-desc">Shortlisted students receive digital offer letters. Acceptance deadline: June 20.</div></div>
+        <div class="tl-item" style="padding-bottom:0"><div class="tl-dot"></div><div class="tl-date">August 1, 2026</div><div class="tl-title">Classes Begin</div><div class="tl-desc">Welcome to NEXUS! Orientation week and campus induction begins.</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="adm-checklist">
+        <div class="adm-check-title">Application Checklist</div>
+        <div class="check-item"><span class="check-icon">✅</span>Completed online application form</div>
+        <div class="check-item"><span class="check-icon">✅</span>Academic transcripts (10th, 12th, UG)</div>
+        <div class="check-item"><span class="check-icon">⬜</span>Statement of Purpose (800–1000 words)</div>
+        <div class="check-item"><span class="check-icon">⬜</span>2 Letters of Recommendation</div>
+        <div class="check-item"><span class="check-icon">⬜</span>Entrance test scores (NEX-SAT / JEE)</div>
+        <div class="check-item"><span class="check-icon">⬜</span>Portfolio (for Design programs)</div>
+        <div class="check-item"><span class="check-icon">⬜</span>Application fee payment: ₹1,500</div>
+      </div>
+      <div style="margin-top:2rem;background:rgba(200,150,42,.1);border:1px solid rgba(200,150,42,.3);padding:2rem">
+        <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);font-weight:700;margin-bottom:.8rem">Scholarship Available</div>
+        <div style="font-family:'Instrument Serif',serif;font-size:1.3rem;color:#fff;margin-bottom:.5rem;line-height:1.3">Up to 100% merit scholarship for top 50 applicants.</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:1.2rem;line-height:1.65">NEXUS Excellence Scholarship covers full tuition for students in the top percentile of the entrance exam.</div>
+        <a href="#" class="quiz-btn" style="font-size:.75rem;padding:.7rem 1.5rem">Apply for Scholarship →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ EVENTS ═══════════════════ -->
+<section class="events-section" id="events">
+  <div class="section-eyebrow">Events & Calendar</div>
+  <h2 class="section-title">Something's always <strong>happening.</strong></h2>
+
+  <div class="events-layout">
+    <div class="event-list">
+      <div class="event-item"><div class="ev-date"><div class="ev-day">18</div><div class="ev-month">Apr</div></div><div><div class="ev-title">NEXUS Hackathon 2026 — Browser Battle</div><div class="ev-meta"><span>📍 Innovation Hub, Block C</span><span>⏱ 48 Hours</span></div></div><span class="ev-tag upcoming">Upcoming</span></div>
+      <div class="event-item"><div class="ev-date"><div class="ev-day">22</div><div class="ev-month">Apr</div></div><div><div class="ev-title">Annual Research Symposium</div><div class="ev-meta"><span>📍 Main Auditorium</span><span>⏱ 9AM – 6PM</span></div></div><span class="ev-tag">Academic</span></div>
+      <div class="event-item"><div class="ev-date"><div class="ev-day">05</div><div class="ev-month">May</div></div><div><div class="ev-title">Alumni Networking Night 2026</div><div class="ev-meta"><span>📍 Engineering Quad</span><span>⏱ 6PM – 10PM</span></div></div><span class="ev-tag">Alumni</span></div>
+      <div class="event-item"><div class="ev-date"><div class="ev-day">10</div><div class="ev-month">May</div></div><div><div class="ev-title">International Cultural Fest — NEXUS MELA</div><div class="ev-meta"><span>📍 Campus Grounds</span><span>⏱ 3 Days</span></div></div><span class="ev-tag">Cultural</span></div>
+      <div class="event-item"><div class="ev-date"><div class="ev-day">20</div><div class="ev-month">Jun</div></div><div><div class="ev-title">Convocation Ceremony — Class of 2026</div><div class="ev-meta"><span>📍 Main Auditorium</span><span>⏱ 10AM</span></div></div><span class="ev-tag">Official</span></div>
+    </div>
+
+    <div class="upcoming-card">
+      <div class="uc-eyebrow">Next Major Event</div>
+      <div class="uc-title">Browser Battle Hackathon 2026</div>
+      <div class="uc-date">📅 April 18–20, 2026</div>
+      <div class="uc-loc">📍 Innovation Hub, NEXUS Campus</div>
+      <div class="uc-timer">
+        <div class="uc-t"><div class="uc-t-num" id="eD">22</div><div class="uc-t-lbl">Days</div></div>
+        <div class="uc-t"><div class="uc-t-num" id="eH">14</div><div class="uc-t-lbl">Hrs</div></div>
+        <div class="uc-t"><div class="uc-t-num" id="eM">37</div><div class="uc-t-lbl">Min</div></div>
+        <div class="uc-t"><div class="uc-t-num" id="eS">00</div><div class="uc-t-lbl">Sec</div></div>
+      </div>
+      <a href="#" class="quiz-btn" style="font-size:.75rem;padding:.7rem 1.5rem;display:inline-block">Register for Event →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ NEWS ═══════════════════ -->
+<section class="news-section">
+  <div class="section-eyebrow">Latest News</div>
+  <h2 class="section-title">Stories from <strong>our campus.</strong></h2>
+  <div class="news-grid">
+    <div class="news-card featured">
+      <div class="news-img"><span>🏆</span><div class="news-img-overlay"></div></div>
+      <div class="news-body">
+        <div class="news-cat">Achievement</div>
+        <div class="news-title">NEXUS ranked #7 nationally by QS World University Rankings 2026, moving up 4 places from last year.</div>
+        <div class="news-meta"><span>March 18, 2026</span><span>5 min read</span></div>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-img" style="background:linear-gradient(135deg,#2d4a8c,#1a2744)"><span>🔬</span><div class="news-img-overlay"></div></div>
+      <div class="news-body">
+        <div class="news-cat">Research</div>
+        <div class="news-title">NEXUS Lab secures $12M DARPA grant for quantum error correction research.</div>
+        <div class="news-meta"><span>Mar 10, 2026</span><span>3 min read</span></div>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-img" style="background:linear-gradient(135deg,#2d8c4e,#1a4a30)"><span>🌱</span><div class="news-img-overlay"></div></div>
+      <div class="news-body">
+        <div class="news-cat">Campus</div>
+        <div class="news-title">NEXUS commits to net-zero campus emissions by 2030 with new solar grid.</div>
+        <div class="news-meta"><span>Mar 5, 2026</span><span>4 min read</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CHATBOT ═══════════════════ -->
+<div class="chat-fab">
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-avatar">🤖</div>
+      <div>
+        <div class="chat-name">NEXUS AI Assistant</div>
+        <div class="chat-status"><span class="chat-status-dot"></span>Online — usually replies in seconds</div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-msg bot">Hi! I'm NEXUS AI 👋 I can help you with admissions, courses, campus life, fees, and more. What would you like to know?</div>
+      <div class="chat-suggestions">
+        <button class="chat-sug" onclick="askBot('How do I apply?')">How do I apply?</button>
+        <button class="chat-sug" onclick="askBot('What programs are available?')">What programs are available?</button>
+        <button class="chat-sug" onclick="askBot('What are the hostel facilities?')">Hostel facilities?</button>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input class="chat-input" id="chatInput" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+  <button class="chat-toggle" onclick="toggleChat()">
+    💬
+    <div class="chat-badge">1</div>
+  </button>
+</div>
+
+<!-- BACK TO TOP -->
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:1.2rem">
+        <div class="logo-mark">N</div>
+        <div>
+          <div class="logo-text">NEXUS UNIVERSITY</div>
+          <span class="logo-sub">Est. 1968</span>
+        </div>
+      </div>
+      <p class="footer-desc">A place where curiosity is cultivated, ambition is nurtured, and the future is built — one breakthrough at a time.</p>
+      <div class="footer-social">
+        <div class="social-btn">𝕏</div>
+        <div class="social-btn">in</div>
+        <div class="social-btn">📘</div>
+        <div class="social-btn">▶</div>
+        <div class="social-btn">📸</div>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Academics</div>
+      <ul class="footer-links">
+        <li><a href="#">Undergraduate Programs</a></li>
+        <li><a href="#">Postgraduate Programs</a></li>
+        <li><a href="#">PhD Programs</a></li>
+        <li><a href="#">Online Courses</a></li>
+        <li><a href="#">Executive Education</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Campus</div>
+      <ul class="footer-links">
+        <li><a href="#">Campus Map</a></li>
+        <li><a href="#">Hostels & Housing</a></li>
+        <li><a href="#">Sports Facilities</a></li>
+        <li><a href="#">Cafeteria & Dining</a></li>
+        <li><a href="#">Health Centre</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="#">Admissions Office</a></li>
+        <li><a href="#">Research Cell</a></li>
+        <li><a href="#">Placement Office</a></li>
+        <li><a href="#">Alumni Relations</a></li>
+        <li><a href="#">Press & Media</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 NEXUS University. All rights reserved. NAAC A++ | UGC Recognized | AICTE Approved</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ══ CURSOR ══ */
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function animC(){cur.style.left=mx-5+'px';cur.style.top=my-5+'px';rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx-16+'px';ring.style.top=ry-16+'px';requestAnimationFrame(animC)})();
+document.querySelectorAll('a,button,.prog-card,.alumni-card,.event-item,.tour-spot,.map-cat,.faculty-card,.research-card,.news-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ring.classList.add('big'));
+  el.addEventListener('mouseleave',()=>ring.classList.remove('big'));
+});
+
+/* ══ COUNTDOWN ══ */
+function updateCountdown(){
+  const t=new Date('2026-04-18T09:00:00'),n=new Date(),d=t-n;
+  if(d<=0)return;
+  const days=Math.floor(d/86400000),hours=Math.floor((d%86400000)/3600000),mins=Math.floor((d%3600000)/60000),secs=Math.floor((d%60000)/1000);
+  ['eD','eH','eM','eS'].forEach((id,i)=>{
+    const el=document.getElementById(id);
+    if(el)el.textContent=String([days,hours,mins,secs][i]).padStart(2,'0');
+  });
+}
+setInterval(updateCountdown,1000);updateCountdown();
+
+/* ══ SMART QUIZ ══ */
+let qStep=1,qAnswers={};
+function selectOpt(btn,key,val){
+  btn.closest('.quiz-options').querySelectorAll('.quiz-opt').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  qAnswers[key]=val;
+}
+function quizNext(){
+  const step=document.getElementById('step'+qStep);
+  const sel=step?.querySelector('.quiz-opt.selected');
+  if(qStep<3&&!sel)return;
+  if(qStep>=3){showResult();return;}
+  document.getElementById('step'+qStep).classList.remove('active');
+  qStep++;
+  document.getElementById('step'+qStep).classList.add('active');
+  document.getElementById('pd'+(qStep-1)).classList.add('done');
+  document.getElementById('qBack').style.display='flex';
+  if(qStep===3)document.getElementById('qNext').textContent='See My Match →';
+}
+function quizBack(){
+  if(qStep<=1)return;
+  document.getElementById('step'+qStep).classList.remove('active');
+  qStep--;
+  document.getElementById('step'+qStep).classList.add('active');
+  document.getElementById('pd'+qStep).classList.remove('done');
+  if(qStep===1)document.getElementById('qBack').style.display='none';
+  document.getElementById('qNext').textContent='Next →';
+  document.getElementById('quizResult').classList.remove('show');
+}
+const programMap={
+  tech:{job:'B.Tech Computer Science & AI',startup:'B.Tech CSE + Minor in Business',research:'M.Tech AI & Data Science',impact:'B.Tech Computing for Social Good'},
+  science:{job:'B.Tech Biotechnology',startup:'B.Tech Biotech + MBA',research:'Integrated M.Sc. Physics',impact:'B.Tech Environmental Engineering'},
+  business:{job:'MBA Business Analytics',startup:'MBA Entrepreneurship',research:'MBA + PhD (Research Track)',impact:'MBA Social Enterprise'},
+  design:{job:'B.Des Interaction Design',startup:'B.Des Product Design',research:'M.Des Design Research',impact:'B.Des for Social Innovation'},
+};
+function showResult(){
+  const interest=qAnswers.interest||'tech',goal=qAnswers.goal||'job';
+  const name=programMap[interest]?.[goal]||'B.Tech Computer Science & AI';
+  document.getElementById('resultName').textContent=name;
+  document.getElementById('resultMatch').textContent=`Matched based on: ${Object.values(qAnswers).join(' · ')}`;
+  const tags=['4 Years','NAAC A++ Ranked','Avg ₹18–45 LPA','Industry-ready curriculum'];
+  document.getElementById('resultTags').innerHTML=tags.map(t=>`<span class="rtag">${t}</span>`).join('');
+  document.getElementById('quizResult').classList.add('show');
+  document.getElementById('qNext').style.display='none';
+  document.getElementById('qBack').style.display='none';
+  ['pd1','pd2','pd3'].forEach(id=>document.getElementById(id).classList.add('done'));
+}
+function restartQuiz(){
+  qStep=1;qAnswers={};
+  ['step1','step2','step3'].forEach(id=>{document.getElementById(id).classList.remove('active')});
+  document.getElementById('step1').classList.add('active');
+  ['pd1','pd2','pd3'].forEach(id=>document.getElementById(id).classList.remove('done'));
+  document.getElementById('quizResult').classList.remove('show');
+  document.getElementById('qNext').style.display='';document.getElementById('qNext').textContent='Next →';
+  document.getElementById('qBack').style.display='none';
+  document.querySelectorAll('.quiz-opt').forEach(b=>b.classList.remove('selected'));
+}
+
+/* ══ CAREER PATH VISUALIZER ══ */
+const careerData={
+  cse:{title:'B.Tech CSE & AI',sub:'4-year program · 94% placement rate · Avg. ₹18 LPA starting CTC',
+    flow:[
+      [{icon:'💻',title:'Graduate',salary:'Year 0',cls:'root'}],
+      [{icon:'👨‍💻',title:'Software Engineer',salary:'₹12–22 LPA',cls:''},{icon:'📊',title:'Data Analyst',salary:'₹10–18 LPA',cls:''},{icon:'🔐',title:'Security Engineer',salary:'₹14–24 LPA',cls:''}],
+      [{icon:'🧠',title:'Senior SWE',salary:'₹25–45 LPA',cls:'highlight'},{icon:'🤖',title:'ML Engineer',salary:'₹28–50 LPA',cls:'highlight'},{icon:'🏗️',title:'Tech Lead',salary:'₹35–60 LPA',cls:'highlight'}],
+      [{icon:'🦄',title:'Startup Founder',salary:'Unlimited',cls:'top'},{icon:'🏢',title:'VP Engineering',salary:'₹80L–1.5Cr',cls:'top'},{icon:'🔬',title:'AI Researcher',salary:'₹60L–1.2Cr',cls:'top'}]
+    ]},
+  bio:{title:'B.Tech Biotechnology',sub:'4-year program · 78% placement rate · Avg. ₹12 LPA starting CTC',
+    flow:[
+      [{icon:'🧬',title:'Graduate',salary:'Year 0',cls:'root'}],
+      [{icon:'🔬',title:'Research Assoc.',salary:'₹8–14 LPA',cls:''},{icon:'💊',title:'Pharma Analyst',salary:'₹10–16 LPA',cls:''}],
+      [{icon:'👩‍🔬',title:'Sr. Scientist',salary:'₹18–30 LPA',cls:'highlight'},{icon:'🏥',title:'Clinical Lead',salary:'₹20–35 LPA',cls:'highlight'}],
+      [{icon:'🚀',title:'Biotech Founder',salary:'Unlimited',cls:'top'},{icon:'🏆',title:'R&D Director',salary:'₹50–80 LPA',cls:'top'}]
+    ]},
+  mba:{title:'MBA Business Analytics',sub:'2-year program · 96% placement rate · Avg. ₹22 LPA starting CTC',
+    flow:[
+      [{icon:'📊',title:'MBA Graduate',salary:'Year 0',cls:'root'}],
+      [{icon:'📈',title:'Consultant',salary:'₹18–28 LPA',cls:''},{icon:'💰',title:'Fin. Analyst',salary:'₹16–24 LPA',cls:''}],
+      [{icon:'🎯',title:'Sr. Manager',salary:'₹35–55 LPA',cls:'highlight'},{icon:'📦',title:'Product Manager',salary:'₹30–50 LPA',cls:'highlight'}],
+      [{icon:'🏦',title:'Partner / Director',salary:'₹80L–2Cr',cls:'top'},{icon:'🦁',title:'CEO / Founder',salary:'Unlimited',cls:'top'}]
+    ]},
+  design:{title:'B.Des Interaction Design',sub:'4-year program · 88% placement rate · Avg. ₹14 LPA starting CTC',
+    flow:[
+      [{icon:'🎨',title:'Des. Graduate',salary:'Year 0',cls:'root'}],
+      [{icon:'✏️',title:'UI/UX Designer',salary:'₹10–18 LPA',cls:''},{icon:'🖼️',title:'Visual Designer',salary:'₹8–14 LPA',cls:''}],
+      [{icon:'🧩',title:'Lead Designer',salary:'₹22–38 LPA',cls:'highlight'},{icon:'📱',title:'Product Designer',salary:'₹25–42 LPA',cls:'highlight'}],
+      [{icon:'🚀',title:'Design Founder',salary:'Unlimited',cls:'top'},{icon:'🌟',title:'Design Director',salary:'₹55–90 LPA',cls:'top'}]
+    ]},
+  ee:{title:'B.Tech Electrical Engineering',sub:'4-year program · 86% placement rate · Avg. ₹15 LPA starting CTC',
+    flow:[
+      [{icon:'⚡',title:'EE Graduate',salary:'Year 0',cls:'root'}],
+      [{icon:'🔌',title:'Elec. Engineer',salary:'₹10–18 LPA',cls:''},{icon:'🛰️',title:'Systems Eng.',salary:'₹12–20 LPA',cls:''}],
+      [{icon:'🤖',title:'Robotics Lead',salary:'₹22–38 LPA',cls:'highlight'},{icon:'☀️',title:'Energy Manager',salary:'₹18–32 LPA',cls:'highlight'}],
+      [{icon:'🏭',title:'Plant Director',salary:'₹50–80 LPA',cls:'top'},{icon:'💡',title:'Deep-tech Founder',salary:'Unlimited',cls:'top'}]
+    ]}
+};
+
+function showCareer(btn,key){
+  document.querySelectorAll('.course-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const d=careerData[key];
+  document.getElementById('vizTitle').textContent=d.title;
+  document.getElementById('vizSub').textContent=d.sub;
+  renderFlow(d.flow);
+}
+
+function renderFlow(levels){
+  const el=document.getElementById('flowChart');
+  el.innerHTML='';
+  const tree=document.createElement('div');
+  tree.className='flow-tree';
+  levels.forEach((level,li)=>{
+    if(li>0){
+      const conn=document.createElement('div');
+      conn.innerHTML=`<div style="padding-left:${level.length>1?'77px':'77px'};display:flex;flex-direction:column;gap:0">
+        <div style="display:flex;gap:0;padding-left:${level.length>1?'0':'0'}">
+          ${level.length>1?`<div style="display:flex;flex-direction:column"><div style="width:2px;height:16px;background:rgba(15,14,11,.15);margin:0 auto 0 ${li===0?'77':li*0+'77'}px"></div><div style="display:flex"><div style="width:2px;height:16px;background:rgba(15,14,11,.15);margin-left:77px"></div>${level.slice(1).map(()=>`<div style="width:2px;height:16px;background:rgba(15,14,11,.15);margin-left:${155+24}px"></div>`).join('')}</div></div>`:
+          `<div style="width:2px;height:16px;background:rgba(15,14,11,.15);margin-left:77px"></div>`}
+        </div>
+      </div>`;
+      // simplified connector
+      const simpleConn=document.createElement('div');
+      simpleConn.style.cssText=`display:flex;align-items:center;padding:6px 0 6px ${level.length>1?'62px':'62px'}`;
+      simpleConn.innerHTML=`<div style="width:2px;height:20px;background:rgba(26,39,68,.2)"></div>`;
+      tree.appendChild(simpleConn);
+    }
+    const row=document.createElement('div');
+    row.className='flow-level';
+    level.forEach((node,ni)=>{
+      const n=document.createElement('div');
+      n.className=`flow-node ${node.cls}`;
+      n.innerHTML=`<div class="fn-icon">${node.icon}</div><div class="fn-title">${node.title}</div><div class="fn-salary">${node.salary}</div>`;
+      n.style.transitionDelay=`${li*0.15+ni*0.08}s`;
+      row.appendChild(n);
+      if(ni<level.length-1){
+        const gap=document.createElement('div');
+        gap.style.cssText='display:flex;align-items:center;align-self:center;flex-shrink:0';
+        gap.innerHTML='<div style="width:24px;height:2px;background:rgba(26,39,68,.15)"></div>';
+        row.appendChild(gap);
+      }
+    });
+    tree.appendChild(row);
+  });
+  el.appendChild(tree);
+  requestAnimationFrame(()=>{
+    setTimeout(()=>el.querySelectorAll('.flow-node').forEach(n=>n.classList.add('visible')),50);
+  });
+}
+renderFlow(careerData.cse.flow);
+
+/* ══ ALUMNI FILTER ══ */
+function filterAlumni(btn,cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.alumni-card').forEach(c=>{
+    const cc=c.dataset.cat;
+    c.style.display=(cat==='all'||cc===cat)?'':'none';
+  });
+}
+
+/* ══ VIRTUAL TOUR ══ */
+const spots=[
+  {icon:'🏛️',name:'Main Academic Block',type:'Academic',desc:'12-floor iconic structure housing 80 lecture halls and faculty offices. Built 1972.'},
+  {icon:'🔬',name:'Advanced Research Lab',type:'Research',desc:'State-of-the-art facility with scanning electron microscopes and quantum computing rigs.'},
+  {icon:'📚',name:'Central Library',type:'Academic',desc:'2M+ volumes, 24/7 access, 40 group study rooms, and digital archives from 50+ journals.'},
+  {icon:'🏃',name:'Sports Complex',type:'Sports',desc:'Olympic-size pool, 6 courts, athletics track, indoor gym, and student wellness center.'},
+  {icon:'🍽️',name:'Student Union & Cafeteria',type:'Student Life',desc:'Multi-cuisine food courts, student clubs hub, and the famous rooftop lounge.'},
+  {icon:'🎭',name:'Cultural Centre',type:'Arts',desc:'1200-seat auditorium, art galleries, music studios, and rehearsal spaces.'},
+  {icon:'🏠',name:'Hostel Campus',type:'Residence',desc:'8 residential blocks for 6,000 students. AC rooms, laundry, and 24/7 security.'},
+  {icon:'💡',name:'Innovation Hub',type:'Startup',desc:'Incubator for 40+ active startups, with mentors-in-residence and seed funding access.'},
+];
+let activeSpot=0;
+function renderTour(){
+  const s=spots[activeSpot];
+  document.getElementById('sceneEmoji').textContent=s.icon;
+  document.getElementById('sceneName').textContent=s.name;
+  document.getElementById('sceneDesc').textContent=s.desc;
+  document.querySelectorAll('.tour-spot').forEach((el,i)=>{
+    el.classList.toggle('active-spot',i===activeSpot);
+  });
+  document.querySelectorAll('.tour-btn').forEach((el,i)=>{
+    el.classList.toggle('active-btn',i===activeSpot);
+  });
+}
+function initTour(){
+  const container=document.getElementById('tourSpots');
+  container.innerHTML=spots.map((s,i)=>`
+    <div class="tour-spot ${i===0?'active-spot':''}" onclick="setSpot(${i})">
+      <span class="spot-icon">${s.icon}</span>
+      <div><div class="spot-name">${s.name}</div><div class="spot-type">${s.type}</div></div>
+      <span class="spot-arrow">→</span>
+    </div>`).join('');
+  const dots=document.getElementById('tourDots');
+  dots.innerHTML=spots.map((_,i)=>`<button class="tour-btn ${i===0?'active-btn':''}" onclick="setSpot(${i})">${i+1}</button>`).join('');
+}
+function setSpot(i){activeSpot=i;renderTour();}
+function nextSpot(){activeSpot=(activeSpot+1)%spots.length;renderTour();}
+function prevSpot(){activeSpot=(activeSpot-1+spots.length)%spots.length;renderTour();}
+initTour();
+
+/* ══ CAMPUS MAP ══ */
+const buildings=[
+  {icon:'🏛️',name:'Main Academic Block',cat:'cat-academic',top:40,left:30,info:'Main academic building — 80 lecture halls'},
+  {icon:'🔬',name:'Research Lab A',cat:'cat-lab',top:35,left:55,info:'Advanced Research Lab — Physics & Chemistry'},
+  {icon:'📚',name:'Central Library',cat:'cat-academic',top:55,left:20,info:'2M+ volumes, open 24/7'},
+  {icon:'🏃',name:'Sports Complex',cat:'cat-sports',top:70,left:60,info:'Olympic pool + gym + tracks'},
+  {icon:'🏠',name:'Boys Hostel',cat:'cat-hostel',top:20,left:75,info:'Block A–D · 3200 students'},
+  {icon:'🏠',name:'Girls Hostel',cat:'cat-hostel',top:75,left:15,info:'Block E–G · 2800 students'},
+  {icon:'🏢',name:'Admin Block',cat:'cat-admin',top:15,left:40,info:'Admissions, Registrar, Finance'},
+  {icon:'💡',name:'Innovation Hub',cat:'cat-lab',top:60,left:40,info:'40+ startups incubated'},
+  {icon:'🎭',name:'Cultural Centre',cat:'cat-academic',top:45,left:70,info:'1200-seat auditorium'},
+  {icon:'⚽',name:'Football Ground',cat:'cat-sports',top:80,left:45,info:'FIFA-standard pitch'},
+];
+function initMap(){
+  const canvas=document.getElementById('mapCanvas');
+  const tip=document.getElementById('mapTip');
+  buildings.forEach(b=>{
+    const el=document.createElement('div');
+    el.className=`map-building ${b.cat}`;
+    el.style.cssText=`top:${b.top}%;left:${b.left}%;transform:translate(-50%,-50%)`;
+    el.innerHTML=`<div class="mb-box">${b.icon}</div><div class="mb-label">${b.name}</div>`;
+    el.addEventListener('mouseenter',e=>{
+      tip.innerHTML=`<strong>${b.name}</strong><br><span style="font-size:.65rem;opacity:.7">${b.info}</span>`;
+      tip.classList.add('show');
+      tip.style.left=Math.min(b.left,75)+'%';
+      tip.style.top=(b.top-15)+'%';
+    });
+    el.addEventListener('mouseleave',()=>tip.classList.remove('show'));
+    canvas.appendChild(el);
+  });
+}
+function filterMap(btn,cat){
+  document.querySelectorAll('.map-cat').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.map-building').forEach(b=>{
+    b.style.opacity=cat==='all'||b.classList.contains(cat)?'1':'0.15';
+  });
+}
+initMap();
+
+/* ══ COUNTERS ══ */
+const counters=document.querySelectorAll('.counter');
+const countObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,target=+el.dataset.target;
+    let cur=0;const step=target/60;
+    const t=setInterval(()=>{
+      cur=Math.min(cur+step,target);
+      el.textContent=Math.floor(cur).toLocaleString();
+      if(cur>=target)clearInterval(t);
+    },25);
+    countObs.unobserve(el);
+  });
+});
+counters.forEach(c=>countObs.observe(c));
+
+/* ══ SCROLL REVEAL ══ */
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* ══ BACK TO TOP ══ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('backTop').classList.toggle('show',window.scrollY>400);
+});
+
+/* ══ CHATBOT ══ */
+let chatOpen=false;
+const responses={
+  'how do i apply':'To apply to NEXUS University:\n1. Visit our Admissions page\n2. Fill the online form\n3. Upload your transcripts + SOP\n4. Pay ₹1,500 application fee\n\nDeadline: March 31, 2026 🎓',
+  'what programs are available':'We offer 180+ programs including:\n• B.Tech (CSE, EE, Biotech, Civil, Mech)\n• MBA (Analytics, Marketing, Finance)\n• B.Des Interaction Design\n• M.Tech & PhD programs\n\nUse our Smart Course Finder for personalized recommendations!',
+  'hostel facilities':'NEXUS has 8 residential blocks for 6,000 students:\n• AC & Non-AC rooms\n• High-speed WiFi (1Gbps)\n• 24/7 security\n• Laundry, gym, common rooms\n• Mess + food courts\n\nMonthly cost: ₹8,000–₹14,000',
+  'default':'Thanks for asking! I can help you with:\n• Admissions process\n• Programs & courses\n• Fees & scholarships\n• Campus facilities\n• Events & deadlines\n\nWhat would you like to know? 😊'
+};
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const cw=document.getElementById('chatWindow');
+  cw.classList.toggle('open',chatOpen);
+  document.querySelector('.chat-badge').style.display=chatOpen?'none':'flex';
+}
+function askBot(q){
+  addMessage(q,'user');
+  setTimeout(()=>typeResponse(q),600);
+}
+function sendChat(){
+  const input=document.getElementById('chatInput');
+  const msg=input.value.trim();
+  if(!msg)return;
+  addMessage(msg,'user');
+  input.value='';
+  setTimeout(()=>typeResponse(msg),600);
+}
+function addMessage(text,role){
+  const body=document.getElementById('chatBody');
+  const msg=document.createElement('div');
+  msg.className=`chat-msg ${role}`;
+  msg.textContent=text;
+  body.appendChild(msg);
+  body.scrollTop=body.scrollHeight;
+}
+function typeResponse(q){
+  const body=document.getElementById('chatBody');
+  const typing=document.createElement('div');
+  typing.className='typing-indicator';
+  typing.innerHTML='<span></span><span></span><span></span>';
+  body.appendChild(typing);
+  body.scrollTop=body.scrollHeight;
+  const key=Object.keys(responses).find(k=>q.toLowerCase().includes(k));
+  const reply=responses[key]||responses['default'];
+  setTimeout(()=>{
+    body.removeChild(typing);
+    addMessage(reply,'bot');
+  },1200);
+}
+
+/* ══ NAV SCROLL ══ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').style.boxShadow=window.scrollY>50?'0 4px 30px rgba(15,14,11,.08)':'none';
+});
+</script>
+</body>
+</html>
