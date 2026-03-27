@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 import React, { useEffect } from 'react';
 import Hero from '../components/sections/Hero';
 import Marquee from '../components/sections/Marquee';
+import About from '../components/sections/About';
 import SmartCourseFinder from '../components/sections/SmartCourseFinder';
 import CareerPathVisualizer from '../components/sections/CareerPathVisualizer';
 import AlumniSuccess from '../components/sections/AlumniSuccess';
@@ -13,6 +13,7 @@ import Research from '../components/sections/Research';
 import Faculty from '../components/sections/Faculty';
 import Admissions from '../components/sections/Admissions';
 import News from '../components/sections/News';
+import Placements from '../components/sections/Placements';
 
 export default function Home() {
   useEffect(() => {
@@ -33,12 +34,14 @@ export default function Home() {
     <>
       <Hero />
       <Marquee />
+      <About />
       <SmartCourseFinder />
       <CareerPathVisualizer />
       <AlumniSuccess />
       <VirtualTour />
       <CampusMap />
       <StatsCounter />
+      <Placements />
       <Events />
       <Research />
       <Faculty />
@@ -47,49 +50,4 @@ export default function Home() {
     </>
   );
 }
-=======
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Marquee from '../components/Marquee';
-import CourseFinder from '../components/CourseFinder';
-import FeaturedCourses from '../components/FeaturedCourses';
-import CareerPath from '../components/CareerPath';
-import Alumni from '../components/Alumni';
-import Stats from '../components/Stats';
-import VirtualTour from '../components/VirtualTour';
-import CampusMap from '../components/CampusMap';
-import Research from '../components/Research';
-import Faculty from '../components/Faculty';
-import Admissions from '../components/Admissions';
-import Events from '../components/Events';
-import News from '../components/News';
-import Chatbot from '../components/Chatbot';
-import Footer from '../components/Footer';
 
-const Home = () => {
-  return (
-    <>
-      <Navbar />
-      <Hero />
-      <Marquee />
-      <CourseFinder />
-      <FeaturedCourses />
-      <CareerPath />
-      <Alumni />
-      <Stats />
-      <VirtualTour />
-      <CampusMap />
-      <Research />
-      <Faculty />
-      <Admissions />
-      <Events />
-      <News />
-      <Chatbot />
-      <Footer />
-    </>
-  );
-};
-
-export default Home;
->>>>>>> c6d1e4ee1b7b69940e3222b938f3964297e5aaeb

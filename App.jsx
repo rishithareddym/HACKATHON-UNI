@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -15,29 +14,12 @@ import CoursesAll from './pages/courses/CoursesAll';
 import CoursesRecommendations from './pages/courses/CoursesRecommendations';
 import CourseDetail from './pages/courses/CourseDetail';
 import CourseApply from './pages/courses/CourseApply';
+import AlumniDetail from './pages/alumni/AlumniDetail';
 import { CustomCursor, BackToTop, Chatbot } from './components/Miscellaneous';
 import './index.css'; 
-=======
-import React, { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import CustomCursor from './components/CustomCursor';
-import Home from './pages/Home';
-import CoursesHub from './pages/CoursesHub';
-import CourseDetail from './pages/CourseDetail';
-import './index.css';
-import './App.css';
-
-export default function App() {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
->>>>>>> c6d1e4ee1b7b69940e3222b938f3964297e5aaeb
 
 function App() {
   return (
-<<<<<<< HEAD
     <>
       {/* Visual Enhancers */}
       <CustomCursor />
@@ -59,6 +41,7 @@ function App() {
           <Route path="/courses/recommendations" element={<CoursesRecommendations />} />
           <Route path="/courses/:courseId" element={<CourseDetail />} />
           <Route path="/courses/:courseId/apply" element={<CourseApply />} />
+          <Route path="/alumni/:id" element={<AlumniDetail />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
@@ -69,18 +52,6 @@ function App() {
       <BackToTop />
       <Chatbot />
     </>
-=======
-    <div className="app-container">
-      <CustomCursor />
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/courses" element={<CoursesHub />} />
-        <Route path="/course/:id" element={<CourseDetail />} />
-        <Route path="/apply" element={<div style={{ padding: '10rem 4rem', minHeight: '100vh', color: 'white', background: 'var(--deep)' }}><h1>Application Portal</h1><p>Coming soon...</p></div>} />
-      </Routes>
-    </div>
->>>>>>> c6d1e4ee1b7b69940e3222b938f3964297e5aaeb
   );
 }
 

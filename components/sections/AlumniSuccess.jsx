@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AlumniSuccess() {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('all');
 
   const show = (cat) => filter === 'all' || filter === cat;
@@ -41,7 +43,13 @@ export default function AlumniSuccess() {
           <div className="alumni-quote">
             "BMSCE didn't just give me a degree &mdash; it gave me a hunger for problems nobody had solved yet. My final-year research project became the foundation of a paper that changed how we think about multi-modal AI."
             <br/><br/>
-            <a href="#" style={{ fontSize: '.72rem', fontWeight: 700, color: 'var(--deep)', letterSpacing: '.05em', textTransform: 'uppercase' }}>Read Full Story &rarr;</a>
+            <button
+              type="button"
+              className="alumni-readmore"
+              onClick={() => navigate('/alumni/riya-mehta')}
+            >
+              Read Full Story &rarr;
+            </button>
           </div>
         </div>
 
@@ -59,6 +67,13 @@ export default function AlumniSuccess() {
             <span className="alumni-batch">Batch 2020</span>
             <span className="alumni-course-tag">CSE</span>
             <span className="alumni-achievement">&#128176; $14M Raised</span>
+            <button
+              type="button"
+              className="alumni-readmore-sm"
+              onClick={() => navigate('/alumni/arjun-kapoor')}
+            >
+              Read Full Story &rarr;
+            </button>
           </div>
         </div>
 
@@ -76,6 +91,13 @@ export default function AlumniSuccess() {
             <span className="alumni-batch">Batch 2019</span>
             <span className="alumni-course-tag">EE</span>
             <span className="alumni-achievement">&#11088; &#8377;52 LPA</span>
+            <button
+              type="button"
+              className="alumni-readmore-sm"
+              onClick={() => navigate('/alumni/sneha-varghese')}
+            >
+              Read Full Story &rarr;
+            </button>
           </div>
         </div>
 
@@ -93,6 +115,13 @@ export default function AlumniSuccess() {
             <span className="alumni-batch">Batch 2015</span>
             <span className="alumni-course-tag">Physics</span>
             <span className="alumni-achievement">&#127941; NASA Award</span>
+            <button
+              type="button"
+              className="alumni-readmore-sm"
+              onClick={() => navigate('/alumni/priya-nair')}
+            >
+              Read Full Story &rarr;
+            </button>
           </div>
         </div>
 
@@ -110,6 +139,13 @@ export default function AlumniSuccess() {
             <span className="alumni-batch">Batch 2017</span>
             <span className="alumni-course-tag">MBA</span>
             <span className="alumni-achievement">&#129412; $1.2B Valuation</span>
+            <button
+              type="button"
+              className="alumni-readmore-sm"
+              onClick={() => navigate('/alumni/arjun-kapoor')}
+            >
+              Read Full Story &rarr;
+            </button>
           </div>
         </div>
 
@@ -127,6 +163,13 @@ export default function AlumniSuccess() {
             <span className="alumni-batch">Batch 2021</span>
             <span className="alumni-course-tag">CSE AI</span>
             <span className="alumni-achievement">&#11088; &#8377;44 LPA</span>
+            <button
+              type="button"
+              className="alumni-readmore-sm"
+              onClick={() => navigate('/alumni/riya-mehta')}
+            >
+              Read Full Story &rarr;
+            </button>
           </div>
         </div>
       </div>
