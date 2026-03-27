@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 export default function Hero() {
+  const words = useMemo(() => ['Think', 'Learn', 'Lead'], []);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const reduceMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    const t = window.setInterval(() => {
+      setActiveIdx((p) => (p + 1) % words.length);
+    }, 2400);
+    return () => window.clearInterval(t);
+  }, [words.length]);
+
   return (
     <section className="hero" id="home">
       <div className="hero-bg-text">ZENITH</div>
@@ -12,10 +26,56 @@ export default function Hero() {
           Applications Open &middot; Class of 2029
         </div>
         <h1 className="hero-title">
-          Where bold<br />
-          <em>minds</em> build<br />
-          <strong>tomorrow.</strong>
+          <span
+            className={`hero-word ${activeIdx === 0 ? 'active' : ''}`}
+            role="button"
+            tabIndex={0}
+            aria-label="Think"
+            onClick={() => setActiveIdx(0)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setActiveIdx(0);
+            }}
+          >
+            Think
+          </span>
+          <br />
+          <span
+            className={`hero-word ${activeIdx === 1 ? 'active' : ''}`}
+            role="button"
+            tabIndex={0}
+            aria-label="Learn"
+            onClick={() => setActiveIdx(1)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setActiveIdx(1);
+            }}
+          >
+            Learn
+          </span>
+          <br />
+          <span
+            className={`hero-word ${activeIdx === 2 ? 'active' : ''}`}
+            role="button"
+            tabIndex={0}
+            aria-label="Lead"
+            onClick={() => setActiveIdx(2)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setActiveIdx(2);
+            }}
+          >
+            Lead
+          </span>
         </h1>
+        <div className="hero-word-nav" aria-label="Hero navigation">
+          {words.map((w, idx) => (
+            <button
+              key={w}
+              type="button"
+              className={`hero-word-dot ${idx === activeIdx ? 'active' : ''}`}
+              onClick={() => setActiveIdx(idx)}
+              aria-label={`Go to ${w}`}
+            />
+          ))}
+        </div>
         <p className="hero-sub">Zenith Institute of Technology is home to 28,000 students across 180+ programs. We don't just teach &mdash; we equip you to reshape industries, lead movements, and build what doesn't exist yet.</p>
         <div className="hero-actions">
           <a href="#admissions" className="btn-dark">Explore Admissions</a>
@@ -40,7 +100,7 @@ export default function Hero() {
       <div className="hero-right">
         <div className="hero-card-stack">
           <div className="hero-main-card">
-            <div className="hero-card-img">&#127963;</div>
+            <div className="hero-card-img" aria-hidden="true"></div>
             <div className="hero-card-overlay"></div>
             <div className="hero-card-content">
               <div className="hcard-label">Campus Life</div>
@@ -58,6 +118,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
     </section>
   );
 }

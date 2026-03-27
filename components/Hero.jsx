@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 const Hero = () => {
+  const words = useMemo(() => ['Think', 'Learn', 'Lead'], []);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const reduceMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    const t = window.setInterval(() => {
+      setActiveIdx((p) => (p + 1) % words.length);
+    }, 2400);
+    return () => window.clearInterval(t);
+  }, [words.length]);
+
   return (
     <section className="hero" id="home">
       <div className="hero-glow-bg"></div>
@@ -13,10 +27,56 @@ const Hero = () => {
           Applications Open · Class of 2029
         </div>
         <h1 className="hero-title">
-          Where bold<br />
-          <em>minds</em> build<br />
-          <strong>tomorrow.</strong>
+          <span
+            className={`hero-word ${activeIdx === 0 ? 'active' : ''}`}
+            role="button"
+            tabIndex={0}
+            aria-label="Think"
+            onClick={() => setActiveIdx(0)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setActiveIdx(0);
+            }}
+          >
+            Think
+          </span>
+          <br />
+          <span
+            className={`hero-word ${activeIdx === 1 ? 'active' : ''}`}
+            role="button"
+            tabIndex={0}
+            aria-label="Learn"
+            onClick={() => setActiveIdx(1)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setActiveIdx(1);
+            }}
+          >
+            Learn
+          </span>
+          <br />
+          <span
+            className={`hero-word ${activeIdx === 2 ? 'active' : ''}`}
+            role="button"
+            tabIndex={0}
+            aria-label="Lead"
+            onClick={() => setActiveIdx(2)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setActiveIdx(2);
+            }}
+          >
+            Lead
+          </span>
         </h1>
+        <div className="hero-word-nav" aria-label="Hero navigation">
+          {words.map((w, idx) => (
+            <button
+              key={w}
+              type="button"
+              className={`hero-word-dot ${idx === activeIdx ? 'active' : ''}`}
+              onClick={() => setActiveIdx(idx)}
+              aria-label={`Go to ${w}`}
+            />
+          ))}
+        </div>
         <p className="hero-sub">NEXUS University is home to 28,000 students across 180+ programs. We don't just teach &mdash; we equip you to reshape industries, lead movements, and build what doesn't exist yet.</p>
         <div className="hero-actions">
           <a href="#academics" className="btn-dark">Explore Courses</a>
@@ -59,6 +119,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
     </section>
   );
 };

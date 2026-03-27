@@ -14,6 +14,7 @@ import Faculty from '../components/sections/Faculty';
 import Admissions from '../components/sections/Admissions';
 import News from '../components/sections/News';
 import Placements from '../components/sections/Placements';
+import ClubsCarousel from '../components/sections/ClubsCarousel';
 
 export default function Home() {
   useEffect(() => {
@@ -43,6 +44,7 @@ export default function Home() {
       <StatsCounter />
       <Placements />
       <Events />
+      <ClubsCarousel />
       <Research />
       <Faculty />
       <Admissions />
