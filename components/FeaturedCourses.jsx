@@ -21,7 +21,7 @@ const FeaturedCourses = () => {
 
       <div className="featured-grid">
         {featured.map(course => (
-          <div key={course.id} className="featured-card" onClick={() => navigate(`/course/${course.id}`)}>
+          <div key={course.id} className="featured-card" onClick={() => navigate('/courses')}>
             <div className="fc-icon">{course.icon}</div>
             <div className="fc-content">
               <div className="fc-category">{course.category}</div>

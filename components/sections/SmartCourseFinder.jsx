@@ -19,17 +19,6 @@ export default function SmartCourseFinder() {
   };
 
   const nextStep = () => {
-    // Requirement: after selecting an interest and clicking Next, go to recommendations.
-    if (step === 1 && answers.interest) {
-      try {
-        localStorage.setItem('courseFinderInterest', answers.interest);
-      } catch {
-        // ignore
-      }
-      navigate('/courses/recommendations', { state: { interest: answers.interest } });
-      return;
-    }
-
     if (step < 3) setStep(step + 1);
     else setShowResult(true);
   };

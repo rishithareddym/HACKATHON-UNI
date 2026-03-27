@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Admissions() {
+  const navigate = useNavigate();
+
   return (
     <section className="admissions-section" id="admissions">
       <div className="adm-layout">
@@ -46,7 +49,14 @@ export default function Admissions() {
           <div className="check-item"><span className="check-icon">&#10004;</span> Project Portfolio / GitHub (Optional but recommended)</div>
           <div className="check-item"><span className="check-icon">&#10004;</span> Standardized Test Scores (SAT/ACT)</div>
           
-          <button className="nav-cta" style={{ width: '100%', marginTop: '2rem', padding: '1rem' }}>Start Application &rarr;</button>
+          <button
+            className="nav-cta"
+            type="button"
+            onClick={() => navigate('/apply')}
+            style={{ width: '100%', marginTop: '2rem', padding: '1rem' }}
+          >
+            Start Application &rarr;
+          </button>
         </div>
       </div>
     </section>

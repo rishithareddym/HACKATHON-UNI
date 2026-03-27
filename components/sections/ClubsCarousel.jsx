@@ -6,7 +6,7 @@ const CLUBS = [
     name: 'Mountaineering Club',
     desc: 'Adventure through treks, outdoor expeditions, and endurance training.',
     photo:
-      'https://images.unsplash.com/photo-1526481280695-3c687fd5432c?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80',
   },
   {
     id: 'rotaract',

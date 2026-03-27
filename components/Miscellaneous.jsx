@@ -157,8 +157,8 @@ export function Chatbot() {
         </div>
       </div>
       
-      <button className="chat-toggle" onClick={() => setOpen(!open)}>
-        💬
+      <button className="chat-toggle chat-toggle-ai" onClick={() => setOpen(!open)} aria-label="Open AI Assistant">
+        <span className="chat-ai-icon" aria-hidden="true">🤖</span>
         <span className="chat-badge" style={{ display: open ? 'none' : 'flex' }}>1</span>
       </button>
     </div>
