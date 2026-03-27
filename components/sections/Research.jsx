@@ -11,7 +11,7 @@ export default function Research() {
     <section className="research-section" id="research">
       <div className="section-eyebrow">Pioneering Research</div>
       <h2 className="section-title">Expanding the boundaries of <strong>human knowledge.</strong></h2>
-      <p className="section-sub">At BMSCE, undergraduates don't just read about breakthroughs—they co-author them. Our labs are tackling the defining challenges of our time.</p>
+      <p className="section-sub">At Zenith Institute of Technology, undergraduates don't just read about breakthroughs—they co-author them. Our labs are tackling the defining challenges of our time.</p>
 
       <div className="research-grid">
         {researchPapers.map(paper => (

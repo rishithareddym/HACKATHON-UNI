@@ -3,7 +3,7 @@ import React from 'react';
 export default function Hero() {
   return (
     <section className="hero" id="home">
-      <div className="hero-bg-text">BMSCE</div>
+      <div className="hero-bg-text">ZENITH</div>
       <div className="hero-dots"></div>
 
       <div className="hero-left">
@@ -16,7 +16,7 @@ export default function Hero() {
           <em>minds</em> build<br />
           <strong>tomorrow.</strong>
         </h1>
-        <p className="hero-sub">BMS College of Engineering is home to 28,000 students across 180+ programs. We don't just teach &mdash; we equip you to reshape industries, lead movements, and build what doesn't exist yet.</p>
+        <p className="hero-sub">Zenith Institute of Technology is home to 28,000 students across 180+ programs. We don't just teach &mdash; we equip you to reshape industries, lead movements, and build what doesn't exist yet.</p>
         <div className="hero-actions">
           <a href="#admissions" className="btn-dark">Explore Admissions</a>
           <a href="#campus" className="btn-outline">&#9654; Virtual Tour</a>

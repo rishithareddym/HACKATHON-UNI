@@ -41,7 +41,7 @@ export default function AlumniSuccess() {
             <div className="alumni-impact-label">Published Nature papers</div>
           </div>
           <div className="alumni-quote">
-            "BMSCE didn't just give me a degree &mdash; it gave me a hunger for problems nobody had solved yet. My final-year research project became the foundation of a paper that changed how we think about multi-modal AI."
+            "Zenith didn't just give me a degree &mdash; it gave me a hunger for problems nobody had solved yet. My final-year research project became the foundation of a paper that changed how we think about multi-modal AI."
             <br/><br/>
             <button
               type="button"
@@ -86,7 +86,7 @@ export default function AlumniSuccess() {
             <div className="alumni-company">Microsoft Azure &middot; Seattle</div>
           </div>
           <div className="alumni-divider" style={{ margin: '0 2rem' }}></div>
-          <div className="alumni-quote">"My internship became a full-time offer. BMSCE's industry-first curriculum meant I was ahead of peers from 12 other universities on Day 1."</div>
+          <div className="alumni-quote">"My internship became a full-time offer. Zenith's industry-first curriculum meant I was ahead of peers from 12 other universities on Day 1."</div>
           <div className="alumni-card-footer">
             <span className="alumni-batch">Batch 2019</span>
             <span className="alumni-course-tag">EE</span>
@@ -110,7 +110,7 @@ export default function AlumniSuccess() {
             <div className="alumni-company">NASA JPL &middot; California</div>
           </div>
           <div className="alumni-divider" style={{ margin: '0 2rem' }}></div>
-          <div className="alumni-quote">"My PhD work at BMSCE on atmospheric modelling is now part of NASA's climate prediction infrastructure. It started as a semester project."</div>
+          <div className="alumni-quote">"My PhD work at Zenith on atmospheric modelling is now part of NASA's climate prediction infrastructure. It started as a semester project."</div>
           <div className="alumni-card-footer">
             <span className="alumni-batch">Batch 2015</span>
             <span className="alumni-course-tag">Physics</span>
@@ -134,7 +134,7 @@ export default function AlumniSuccess() {
             <div className="alumni-company">Finplex &middot; Unicorn 2024</div>
           </div>
           <div className="alumni-divider" style={{ margin: '0 2rem' }}></div>
-          <div className="alumni-quote">"We built the first BMSCE unicorn. The entrepreneurship cell, the mentors, the lab access &mdash; the college gave us an unfair advantage."</div>
+          <div className="alumni-quote">"We built the first Zenith unicorn. The entrepreneurship cell, the mentors, the lab access &mdash; the college gave us an unfair advantage."</div>
           <div className="alumni-card-footer">
             <span className="alumni-batch">Batch 2017</span>
             <span className="alumni-course-tag">MBA</span>
@@ -158,7 +158,7 @@ export default function AlumniSuccess() {
             <div className="alumni-company">Amazon AWS &middot; Bangalore</div>
           </div>
           <div className="alumni-divider" style={{ margin: '0 2rem' }}></div>
-          <div className="alumni-quote">"Went from sitting in NLP labs at BMSCE to building recommendation systems used by 500M+ Amazon customers. The foundation here is unreal."</div>
+          <div className="alumni-quote">"Went from sitting in NLP labs at Zenith to building recommendation systems used by 500M+ Amazon customers. The foundation here is unreal."</div>
           <div className="alumni-card-footer">
             <span className="alumni-batch">Batch 2021</span>
             <span className="alumni-course-tag">CSE AI</span>

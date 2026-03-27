@@ -24,7 +24,7 @@ export default function About() {
         Built on legacy. Driven by <strong>innovation.</strong>
       </h2>
       <p className="section-sub">
-        BMS College of Engineering is a leading institution focused on academic excellence, hands-on learning,
+        Zenith Institute of Technology is a leading institution focused on academic excellence, hands-on learning,
         and industry-ready outcomes. Our campus culture blends deep fundamentals with modern, project-based education.
       </p>
 
@@ -32,7 +32,7 @@ export default function About() {
         <div className="about-card reveal">
           <div className="about-card-title">College Overview</div>
           <div className="about-text">
-            Located in Bengaluru, BMSCE offers undergraduate, postgraduate, and doctoral programs across engineering,
+            Located in Bengaluru, Zenith Institute of Technology offers undergraduate, postgraduate, and doctoral programs across engineering,
             sciences, management, and design. Our students learn through labs, research, hackathons, and real-world
             partnerships with industry.
           </div>

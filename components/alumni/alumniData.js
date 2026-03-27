@@ -9,7 +9,7 @@ export const alumniData = [
     profileImage:
       'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80',
     shortStory:
-      'BMSCE didn’t just give me a degree — it gave me a hunger for problems nobody had solved yet.',
+      'Zenith didn’t just give me a degree — it gave me a hunger for problems nobody had solved yet.',
     storySections: [
       {
         title: 'From campus labs to world-scale research',
@@ -17,7 +17,7 @@ export const alumniData = [
           'My final-year project started in a small lab with big questions: how do we build models that understand multiple modalities reliably? That curiosity turned into a research track, mentors who pushed me harder than I expected, and eventually a paper that shaped my next steps.',
       },
       {
-        title: 'What BMSCE gave me',
+        title: 'What Zenith gave me',
         text:
           'A culture of building. The freedom to explore. And faculty who treated students like collaborators. The combination of fundamentals + exposure to real research workflows made the transition to deep research teams far smoother.',
       },
@@ -49,7 +49,7 @@ export const alumniData = [
       {
         title: 'Building a team',
         text:
-          'Recruiting your first 10 people is about values. BMSCE’s student network made it easier to find builders who cared about the mission.',
+          'Recruiting your first 10 people is about values. Zenith’s student network made it easier to find builders who cared about the mission.',
       },
       {
         title: 'Advice to builders',

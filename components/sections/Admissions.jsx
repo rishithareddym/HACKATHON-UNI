@@ -19,7 +19,7 @@ export default function Admissions() {
             <div className="tl-item reveal reveal-delay-1">
               <div className="tl-dot"></div>
               <div className="tl-date">January 20 &mdash; 25</div>
-              <div className="tl-title">The BMSCE Aptitude Test (BMSAT)</div>
+              <div className="tl-title">The Zenith Aptitude Test (ZITAT)</div>
               <div className="tl-desc">A unique puzzle and critical thinking test. Not measuring memory, but measuring how you approach unsolved problems.</div>
             </div>
             <div className="tl-item reveal reveal-delay-2">

@@ -13,7 +13,7 @@ export default function Events() {
     <section className="events-section" id="events">
       <div className="section-eyebrow">Campus Life</div>
       <h2 className="section-title">What's happening <strong>on campus.</strong></h2>
-      <p className="section-sub">From 48-hour hackathons to guest lectures by Nobel laureates, the BMSCE campus is always buzzing with energy.</p>
+      <p className="section-sub">From 48-hour hackathons to guest lectures by Nobel laureates, the Zenith campus is always buzzing with energy.</p>
 
       <div className="events-layout">
         <div className="event-list">

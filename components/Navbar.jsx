@@ -21,9 +21,9 @@ const Navbar = () => {
   return (
     <nav id="mainNav" style={{ boxShadow: scrolled ? '0 4px 30px rgba(15,14,11,.08)' : 'none' }}>
       <div className="nav-logo">
-        <div className="logo-mark">B</div>
+        <img className="logo-img" src="/logo.png" alt="Zenith Institute of Technology logo" loading="eager" />
         <div>
-          <div className="logo-text">BMS COLLEGE OF ENGINEERING</div>
+          <div className="logo-text">ZENITH INSTITUTE OF TECHNOLOGY</div>
           <span className="logo-sub">Est. 1946 · Excellence in Innovation</span>
         </div>
       </div>

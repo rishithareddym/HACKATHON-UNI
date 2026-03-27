@@ -83,7 +83,7 @@ export function BackToTop() {
 export function Chatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: 'Hi! I am the BMSCE Admissions Bot. How can I help you today?', sender: 'bot' }
+    { text: 'Hi! I am the Zenith Admissions Bot. How can I help you today?', sender: 'bot' }
   ]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);

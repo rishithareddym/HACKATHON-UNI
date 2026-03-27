@@ -6,9 +6,9 @@ const Footer = () => {
       <div className="footer-top">
         <div className="footer-brand">
           <div className="nav-logo" style={{ marginBottom: '1.2rem' }}>
-            <div className="logo-mark" style={{ background: 'var(--gold)' }}>B</div>
+            <img className="logo-img footer-logo-img" src="/logo.png" alt="Zenith Institute of Technology logo" loading="lazy" />
             <div>
-              <div className="logo-text" style={{ color: '#fff' }}>BMS COLLEGE OF ENGINEERING</div>
+              <div className="logo-text" style={{ color: '#fff' }}>ZENITH INSTITUTE OF TECHNOLOGY</div>
               <span className="logo-sub">Est. 1946</span>
             </div>
           </div>
@@ -60,7 +60,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <div className="footer-copy">
-          © {new Date().getFullYear()} BMS College of Engineering. All rights reserved. NAAC A++ | UGC Recognized | AICTE Approved
+          © {new Date().getFullYear()} Zenith Institute of Technology. All rights reserved. NAAC A++ | UGC Recognized | AICTE Approved
         </div>
         <div className="footer-legal">
           <a href="#">Privacy Policy</a>
